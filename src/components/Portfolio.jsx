@@ -4,6 +4,7 @@ import { categories } from '../data/projects';
 import { ArrowUp } from 'lucide-react';
 import ImageGallery from './ImageGallery';
 import './Portfolio.css';
+import { div } from 'framer-motion/client';
 
 const Portfolio = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(() => {
@@ -78,184 +79,186 @@ const Portfolio = () => {
     };
 
     return (
-        <div className="portfolio-container">
-            {/* Div fixe avec gradients en arriÃ¨re-plan */}
-            {isMenuOpen && (
-                <Motion.div
-                    className="gradient-background"
-                    animate={{
-                        backgroundImage: `
-                            radial-gradient(ellipse 600px 400px at 110% 0%, ${currentGradient.center} 0%, transparent 60%),
-                            radial-gradient(ellipse 400px 600px at 10% 90%, ${currentGradient.corner} 0%, transparent 65%)
-                        `,
-                    }}
-                    transition={{ duration: 0.6 }}
-                />
-            )}
-
-            {/* Menu latÃ©ral */}
-            <AnimatePresence>
+        <div className="portfolio-wrapper">
+            <div className="portfolio-container">
+                {/* Div fixe avec gradients en arriÃ¨re-plan */}
                 {isMenuOpen && (
-                    <Motion.nav
-                        className="sidebar-menu"
-                        initial={{ x: -300, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: -300, opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                    >
-                        <ul className="menu-list">
-                            {categories.map((category) => (
-                                <li key={category.id}>
-                                    <button
-                                        onClick={() => handleCategoryClick(category.id)}
-                                        className={`menu-item ${activeSection === category.id ? 'active' : ''}`}
-                                    >
-                                        {category.title}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </Motion.nav>
-                )}
-            </AnimatePresence>
-
-            {/* Grille initiale */}
-            <AnimatePresence>
-                {!isMenuOpen && (
                     <Motion.div
-                        className="categories-grid-container"
-                        initial={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -1000 }}
-                        transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
-                    >
-                        <div className="categories-grid">
-                            {categories.map((category, index) => {
-                                const IconComponent = category.icon;
-                                return (
-                                    <Motion.button
-                                        key={category.id}
-                                        className="category-card"
-                                        onClick={() => setIsMenuOpen(true)}
-                                        style={{ backgroundColor: gradientColors[category.id].full }}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.1, duration: 0.5 }}
-                                    >
-                                        {/* IcÃ´ne Ã  gauche (moitiÃ© dehors) */}
-                                        <div className="category-icon" style={{ 
-                                            color: '#ffffff',
-                                            backgroundColor: category.color 
-                                        }}>
-                                            <IconComponent size={44} strokeWidth={1.2} />
-                                        </div>
-
-                                        {/* Contenu */}
-                                        <div className="category-content">
-                                            <h3 className="category-title">{category.title}</h3>
-                                            {/* <div className="category-count">
-                                                {category.projects.length} PROJET{category.projects.length > 1 ? 'S' : ''}
-                                            </div> */}
-                                        </div>
-                                    </Motion.button>
-                                );
-                            })}
-                        </div>
-                    </Motion.div>
+                        className="gradient-background"
+                        animate={{
+                            backgroundImage: `
+                                radial-gradient(ellipse 600px 400px at 110% 0%, ${currentGradient.center} 0%, transparent 60%),
+                                radial-gradient(ellipse 400px 600px at 10% 90%, ${currentGradient.corner} 0%, transparent 65%)
+                            `,
+                        }}
+                        transition={{ duration: 0.6 }}
+                    />
                 )}
-            </AnimatePresence>
 
-            {/* Contenu principal avec sections */}
-            {isMenuOpen && (
-                <div className="main-content">
-                    {categories.map((category, categoryIndex) => (
-                        <section
-                            key={category.id}
-                            id={`section-${category.id}`}
-                            className="content-section"
+                {/* Menu latÃ©ral */}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <Motion.nav
+                            className="sidebar-menu"
+                            initial={{ x: -300, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: -300, opacity: 0 }}
+                            transition={{ duration: 0.4 }}
                         >
-                            <Motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                                viewport={{ once: false, amount: 0.1 }}
+                            <ul className="menu-list">
+                                {categories.map((category) => (
+                                    <li key={category.id}>
+                                        <button
+                                            onClick={() => handleCategoryClick(category.id)}
+                                            className={`menu-item ${activeSection === category.id ? 'active' : ''}`}
+                                        >
+                                            {category.title}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Motion.nav>
+                    )}
+                </AnimatePresence>
+
+                {/* Grille initiale */}
+                <AnimatePresence>
+                    {!isMenuOpen && (
+                        <Motion.div
+                            className="categories-grid-container"
+                            initial={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -1000 }}
+                            transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+                        >
+                            <div className="categories-grid">
+                                {categories.map((category, index) => {
+                                    const IconComponent = category.icon;
+                                    return (
+                                        <Motion.button
+                                            key={category.id}
+                                            className="category-card"
+                                            onClick={() => setIsMenuOpen(true)}
+                                            style={{ backgroundColor: gradientColors[category.id].full }}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                                        >
+                                            {/* IcÃ´ne Ã  gauche (moitiÃ© dehors) */}
+                                            <div className="category-icon" style={{ 
+                                                color: '#ffffff',
+                                                backgroundColor: category.color 
+                                            }}>
+                                                <IconComponent size={44} strokeWidth={1.2} />
+                                            </div>
+
+                                            {/* Contenu */}
+                                            <div className="category-content">
+                                                <h3 className="category-title">{category.title}</h3>
+                                                {/* <div className="category-count">
+                                                    {category.projects.length} PROJET{category.projects.length > 1 ? 'S' : ''}
+                                                </div> */}
+                                            </div>
+                                        </Motion.button>
+                                    );
+                                })}
+                            </div>
+                        </Motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Contenu principal avec sections */}
+                {isMenuOpen && (
+                    <div className="main-content">
+                        {categories.map((category, categoryIndex) => (
+                            <section
+                                key={category.id}
+                                id={`section-${category.id}`}
+                                className="content-section"
                             >
-                                <h2 className="section-title">{category.title}</h2>
+                                <Motion.div
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ duration: 0.6 }}
+                                    viewport={{ once: false, amount: 0.1 }}
+                                >
+                                    <h2 className="section-title">{category.title}</h2>
 
-                                {category.gallery && (
-                                    <Motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5 }}
-                                        viewport={{ once: false, amount: 0.1 }}
-                                        style={{ marginBottom: '3rem' }}
-                                    >
-                                        <ImageGallery images={category.gallery} />
-                                    </Motion.div>
-                                )}
-                                {category.projects && category.projects.length > 0 && (
-                                    <div className="projects-container">
-                                        {category.projects.map((project, projectIndex) => (
-                                            <Motion.div
-                                                key={projectIndex}
-                                                className="project-subsection"
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                transition={{
-                                                    delay: projectIndex * 0.05,
-                                                    duration: 0.4
-                                                }}
-                                                viewport={{ once: false, amount: 0.2 }}
-                                            >
-                                                <h3 className="project-name">{project.name}</h3>
-                                                <p className="project-description">{project.description}</p>
+                                    {category.gallery && (
+                                        <Motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5 }}
+                                            viewport={{ once: false, amount: 0.1 }}
+                                            style={{ marginBottom: '3rem' }}
+                                        >
+                                            <ImageGallery images={category.gallery} />
+                                        </Motion.div>
+                                    )}
+                                    {category.projects && category.projects.length > 0 && (
+                                        <div className="projects-container">
+                                            {category.projects.map((project, projectIndex) => (
+                                                <Motion.div
+                                                    key={projectIndex}
+                                                    className="project-subsection"
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    transition={{
+                                                        delay: projectIndex * 0.05,
+                                                        duration: 0.4
+                                                    }}
+                                                    viewport={{ once: false, amount: 0.2 }}
+                                                >
+                                                    <h3 className="project-name">{project.name}</h3>
+                                                    <p className="project-description">{project.description}</p>
 
-                                                <div className="project-metadata">
-                                                    {project.tech && (
-                                                        <div className="metadata-item">
-                                                            <span className="metadata-label">Technologies:</span>
-                                                            <span className="metadata-value">{project.tech.join(', ')}</span>
-                                                        </div>
-                                                    )}
+                                                    <div className="project-metadata">
+                                                        {project.tech && (
+                                                            <div className="metadata-item">
+                                                                <span className="metadata-label">Technologies:</span>
+                                                                <span className="metadata-value">{project.tech.join(', ')}</span>
+                                                            </div>
+                                                        )}
 
-                                                    {project.period && (
-                                                        <div className="metadata-item">
-                                                            <span className="metadata-label">PÃ©riode:</span>
-                                                            <span className="metadata-value">{project.period}</span>
-                                                        </div>
-                                                    )}
+                                                        {project.period && (
+                                                            <div className="metadata-item">
+                                                                <span className="metadata-label">Période:</span>
+                                                                <span className="metadata-value">{project.period}</span>
+                                                            </div>
+                                                        )}
 
-                                                    {project.metrics && (
-                                                        <div className="metadata-item">
-                                                            <span className="metadata-label">RÃ©sultats:</span>
-                                                            <span className="metadata-value">{project.metrics}</span>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </Motion.div>
-                                        ))}
-                                    </div>
-                                )}
-                            </Motion.div>
-                        </section>
-                    ))}
-                </div>
-            )}
-
-            {/* Bouton "Revenir en haut" */}
-            <AnimatePresence>
-                {showScrollTop && (
-                    <Motion.button
-                        className="scroll-to-top"
-                        onClick={scrollToTop}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <ArrowUp size={20} />
-                    </Motion.button>
+                                                        {project.metrics && (
+                                                            <div className="metadata-item">
+                                                                <span className="metadata-label">Résultats:</span>
+                                                                <span className="metadata-value">{project.metrics}</span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </Motion.div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </Motion.div>
+                            </section>
+                        ))}
+                    </div>
                 )}
-            </AnimatePresence>
+
+                {/* Bouton "Revenir en haut" */}
+                <AnimatePresence>
+                    {showScrollTop && (
+                        <Motion.button
+                            className="scroll-to-top"
+                            onClick={scrollToTop}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <ArrowUp size={20} />
+                        </Motion.button>
+                    )}
+                </AnimatePresence>
+            </div>
         </div>
     );
 };

@@ -145,20 +145,20 @@
 
 .gallery-modal-info {
   padding: 1.5rem;
-  background-color: #252525;
+  background-color: #ffffff;
   border-top: 1px solid #333;
 }
 
 .modal-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #201f1f;
   margin: 0 0 0.5rem 0;
 }
 
 .modal-description {
   font-size: 0.95rem;
-  color: #bbb;
+  color: #464646;
   line-height: 1.6;
   margin: 0 0 1rem 0;
 }
@@ -168,7 +168,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #888;
+  color: #e6e6e6;
   padding: 0.5rem 1rem;
   background-color: #1a1a1a;
   border-radius: 20px;

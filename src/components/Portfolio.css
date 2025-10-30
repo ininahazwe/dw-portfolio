@@ -17,6 +17,11 @@
 }
 
 /* Body et conteneur principal */
+
+.portfolio-wrapper {
+    margin: 0 10%;
+}
+
 .portfolio-container {
     min-height: 100vh;
     background-color: #ffffff;
@@ -140,7 +145,7 @@
 
 .sidebar-menu {
     position: fixed;
-    left: 0;
+    left: 10%;
     top: 0;
     height: 100vh;
     width: 270px;
@@ -174,8 +179,9 @@
     letter-spacing: 0.025em;
     cursor: pointer;
     transition: all 300ms ease;
-    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
     position: relative;
+    text-align: right;
 }
 
 .menu-item:hover {
@@ -183,7 +189,7 @@
 }
 
 .menu-item.active {
-    border-left-color: var(--accent);
+    border-right-color: var(--accent);
     background-color: rgba(139, 115, 85, 0.08);
     color: var(--accent);
 }
@@ -287,17 +293,20 @@
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
+    align-items: center;
 }
 
 .metadata-label {
     color: #888;
     font-weight: 300;
     letter-spacing: 0.025em;
+    background: aliceblue;
+    padding: 5px;
 }
 
 .metadata-value {
     color: var(--text-secondary);
-    font-weight: 300;
+    font-weight: 500;
 }
 
 /* ===== BOUTON SCROLL TO TOP ===== */

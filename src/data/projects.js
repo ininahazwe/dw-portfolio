@@ -39,38 +39,6 @@ export const categories = [
         fullsize: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=900&fit=crop',
         category: 'Institutional'
       },
-      {
-        id: 'visual-5',
-        title: 'Ivory Coast Elections',
-        description: 'Current affairs visual series',
-        thumbnail: 'https://images.unsplash.com/photo-1526628652108-351e6557be33?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1526628652108-351e6557be33?w=1200&h=900&fit=crop',
-        category: 'Current Affairs'
-      },
-      {
-        id: 'visual-6',
-        title: 'Video Thumbnails',
-        description: 'Custom thumbnail designs for media',
-        thumbnail: 'https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=1200&h=900&fit=crop',
-        category: 'Media'
-      },
-      {
-        id: 'visual-7',
-        title: 'Newsletter Headers',
-        description: 'Email marketing visual designs',
-        thumbnail: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1200&h=900&fit=crop',
-        category: 'Newsletter'
-      },
-      {
-        id: 'visual-8',
-        title: 'Social Media Series',
-        description: 'Instagram and Facebook post designs',
-        thumbnail: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&h=900&fit=crop',
-        category: 'Social Media'
-      },
     ],
   },
   {
@@ -205,6 +173,13 @@ export const categories = [
         tech: ['Excel', 'Analytics', 'Visualization']
       },
       {
+        name: 'Google Drive & Calendars Setup',
+        description: 'Complete structuring and organization of shared Google Drive with permissions management. Setup and synchronization of shared calendars for team collaboration and scheduling.',
+        period: 'May - June 2025',
+        metrics: 'Fully restructured system',
+        tech: ['Google Workspace', 'Google Drive', 'Google Calendar', 'Organization', 'Permissions']
+      },
+      {
         name: 'Articles Metrics',
         description: 'Tracking and performance analysis of published articles: views, engagement, geographic reach.',
         period: 'April - October 2025',
@@ -218,39 +193,11 @@ export const categories = [
         tech: ['Excel', 'KPI tracking']
       },
       {
-        name: 'Event Coordination',
-        description: 'Organization and monitoring of Forum, GIZ webinars, DW Akademie trainings, and partner events.',
-        period: 'April - October 2025',
-        metrics: '10+ events coordinated',
-        tech: ['Project management', 'Coordination']
-      },
-      {
         name: 'Meetings & Minutes',
         description: 'Participation and documentation of weekly communication team and project managers meetings.',
         period: 'April - October 2025',
         metrics: '50+ documented meetings',
         tech: ['Documentation', 'Note-taking']
-      },
-      {
-        name: 'Technical Self-training',
-        description: 'Autonomous learning: PHP, Looker Studio, WebFlow, ClickUp, DaVinci Resolve.',
-        period: 'April - October 2025',
-        metrics: '5 tools mastered',
-        tech: ['Self-learning', 'Documentation']
-      },
-      {
-        name: 'GIZ Trainings',
-        description: 'Participation in GIZ EU Communication Standards and Peer Learning trainings.',
-        period: 'May - September 2025',
-        metrics: '2 certified trainings',
-        tech: ['EU Standards', 'Best practices']
-      },
-      {
-        name: 'AI Webinars',
-        description: 'Participation in 3 webinars on artificial intelligence and its media applications.',
-        period: 'April 2025',
-        metrics: '3 webinars attended',
-        tech: ['AI', 'Innovation']
       },
       {
         name: 'Digital Tools Survey',
