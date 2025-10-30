@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { categories } from '../data/projects';
 import { ArrowUp } from 'lucide-react';
+import ImageGallery from './ImageGallery';
 import './Portfolio.css';
 
 const Portfolio = () => {
@@ -14,29 +15,41 @@ const Portfolio = () => {
 
     // Palette de couleurs pour les gradients
     const gradientColors = {
-        dev: { center: 'rgba(210, 212, 157, 0.25)', corner: 'rgba(210, 212, 157, 0.10)' },
-        design: { center: 'rgba(255, 89, 94, 0.25)', corner: 'rgba(255, 89, 94, 0.10)' },
-        translation: { center: 'rgba(255, 202, 58, 0.25)', corner: 'rgba(255, 202, 58, 0.10)' },
-        analytics: { center: 'rgba(138, 201, 38, 0.25)', corner: 'rgba(138, 201, 38, 0.10)' },
-        video: { center: 'rgba(25, 130, 196, 0.25)', corner: 'rgba(25, 130, 196, 0.10)' },
-        project: { center: 'rgba(106, 76, 147, 0.25)', corner: 'rgba(106, 76, 147, 0.10)' },
-        audit: { center: 'rgba(255, 159, 28, 0.25)', corner: 'rgba(255, 159, 28, 0.10)' },
-        tools: { center: 'rgba(46, 196, 182, 0.25)', corner: 'rgba(46, 196, 182, 0.10)' },
+        dev: { 
+            center: 'rgba(247, 237, 226, 0.20)',
+            full: 'rgb(247, 237, 226)', 
+            corner: 'rgba(247, 237, 226, 0.10)' 
+        },
+        visual: { 
+            center: 'rgba(245, 202, 195, 0.18)', 
+            full: 'rgb(245, 202, 19)',
+            corner: 'rgba(245, 202, 195, 0.08)' 
+        },
+        translation: { 
+            center: 'rgba(132, 165, 157, 0.18)', 
+            full: 'rgb(132, 165, 157)',
+            corner: 'rgba(132, 165, 157, 0.08)' 
+        },
+        analytics: { 
+            center: 'rgba(242, 132, 130, 0.18)', 
+            full: 'rgb(242, 132, 130)',
+            corner: 'rgba(242, 132, 130, 0.08)' 
+        },
     };
 
     const currentGradient = gradientColors[activeSection] || gradientColors.dev;
 
-    // Persister l'état du menu
+    // Persister l'Ã©tat du menu
     useEffect(() => {
         localStorage.setItem('portfolioMenuOpen', JSON.stringify(isMenuOpen));
     }, [isMenuOpen]);
 
-    // Gérer le scroll pour activer le bouton "scroll to top" et highlighter le menu
+    // GÃ©rer le scroll pour activer le bouton "scroll to top" et highlighter le menu
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 300);
 
-            // Déterminer la section active
+            // DÃ©terminer la section active
             categories.forEach((category) => {
                 const element = document.getElementById(`section-${category.id}`);
                 if (element) {
@@ -66,7 +79,7 @@ const Portfolio = () => {
 
     return (
         <div className="portfolio-container">
-            {/* Div fixe avec gradients en arrière-plan */}
+            {/* Div fixe avec gradients en arriÃ¨re-plan */}
             {isMenuOpen && (
                 <Motion.div
                     className="gradient-background"
@@ -80,7 +93,7 @@ const Portfolio = () => {
                 />
             )}
 
-            {/* Menu latéral */}
+            {/* Menu latÃ©ral */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <Motion.nav
@@ -123,21 +136,25 @@ const Portfolio = () => {
                                         key={category.id}
                                         className="category-card"
                                         onClick={() => setIsMenuOpen(true)}
+                                        style={{ backgroundColor: gradientColors[category.id].full }}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: index * 0.1, duration: 0.5 }}
                                     >
-                                        {/* Icône à gauche (moitié dehors) */}
-                                        <div className="category-icon" style={{ color: category.color }}>
+                                        {/* IcÃ´ne Ã  gauche (moitiÃ© dehors) */}
+                                        <div className="category-icon" style={{ 
+                                            color: '#ffffff',
+                                            backgroundColor: category.color 
+                                        }}>
                                             <IconComponent size={44} strokeWidth={1.2} />
                                         </div>
 
                                         {/* Contenu */}
                                         <div className="category-content">
                                             <h3 className="category-title">{category.title}</h3>
-                                            <div className="category-count">
+                                            {/* <div className="category-count">
                                                 {category.projects.length} PROJET{category.projects.length > 1 ? 'S' : ''}
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </Motion.button>
                                 );
@@ -164,47 +181,60 @@ const Portfolio = () => {
                             >
                                 <h2 className="section-title">{category.title}</h2>
 
-                                <div className="projects-container">
-                                    {category.projects.map((project, projectIndex) => (
-                                        <Motion.div
-                                            key={projectIndex}
-                                            className="project-subsection"
-                                            initial={{ opacity: 0, y: 20 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            transition={{
-                                                delay: projectIndex * 0.05,
-                                                duration: 0.4
-                                            }}
-                                            viewport={{ once: false, amount: 0.2 }}
-                                        >
-                                            <h3 className="project-name">{project.name}</h3>
-                                            <p className="project-description">{project.description}</p>
+                                {category.gallery && (
+                                    <Motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5 }}
+                                        viewport={{ once: false, amount: 0.1 }}
+                                        style={{ marginBottom: '3rem' }}
+                                    >
+                                        <ImageGallery images={category.gallery} />
+                                    </Motion.div>
+                                )}
+                                {category.projects && category.projects.length > 0 && (
+                                    <div className="projects-container">
+                                        {category.projects.map((project, projectIndex) => (
+                                            <Motion.div
+                                                key={projectIndex}
+                                                className="project-subsection"
+                                                initial={{ opacity: 0, y: 20 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                transition={{
+                                                    delay: projectIndex * 0.05,
+                                                    duration: 0.4
+                                                }}
+                                                viewport={{ once: false, amount: 0.2 }}
+                                            >
+                                                <h3 className="project-name">{project.name}</h3>
+                                                <p className="project-description">{project.description}</p>
 
-                                            <div className="project-metadata">
-                                                {project.tech && (
-                                                    <div className="metadata-item">
-                                                        <span className="metadata-label">Technologies:</span>
-                                                        <span className="metadata-value">{project.tech.join(', ')}</span>
-                                                    </div>
-                                                )}
+                                                <div className="project-metadata">
+                                                    {project.tech && (
+                                                        <div className="metadata-item">
+                                                            <span className="metadata-label">Technologies:</span>
+                                                            <span className="metadata-value">{project.tech.join(', ')}</span>
+                                                        </div>
+                                                    )}
 
-                                                {project.period && (
-                                                    <div className="metadata-item">
-                                                        <span className="metadata-label">Période:</span>
-                                                        <span className="metadata-value">{project.period}</span>
-                                                    </div>
-                                                )}
+                                                    {project.period && (
+                                                        <div className="metadata-item">
+                                                            <span className="metadata-label">PÃ©riode:</span>
+                                                            <span className="metadata-value">{project.period}</span>
+                                                        </div>
+                                                    )}
 
-                                                {project.metrics && (
-                                                    <div className="metadata-item">
-                                                        <span className="metadata-label">Résultats:</span>
-                                                        <span className="metadata-value">{project.metrics}</span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </Motion.div>
-                                    ))}
-                                </div>
+                                                    {project.metrics && (
+                                                        <div className="metadata-item">
+                                                            <span className="metadata-label">RÃ©sultats:</span>
+                                                            <span className="metadata-value">{project.metrics}</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </Motion.div>
+                                        ))}
+                                    </div>
+                                )}
                             </Motion.div>
                         </section>
                     ))}
