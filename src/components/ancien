@@ -1,0 +1,25 @@
+<Motion.button
+                                            key={category.id}
+                                            className="category-card"
+                                            onClick={() => setIsMenuOpen(true)}
+                                            style={{ backgroundColor: gradientColors[category.id].full }}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                                        >
+                                            {/* IcÃ´ne Ã  gauche (moitiÃ© dehors) 
+                                            <div className="category-icon" style={{ 
+                                                color: '#ffffff',
+                                                backgroundColor: category.color 
+                                            }}>
+                                                <IconComponent size={44} strokeWidth={1.2} />
+                                            </div>
+
+                                            
+                                            <div className="category-content">
+                                                <h3 className="category-title">{category.title}</h3>
+                                                <div className="category-count">
+                                                    {category.projects.length} PROJET{category.projects.length > 1 ? 'S' : ''}
+                                                </div>
+                                            </div>*/}
+                                        </Motion.button>

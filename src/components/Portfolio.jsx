@@ -17,9 +17,9 @@ const Portfolio = () => {
     // Palette de couleurs pour les gradients
     const gradientColors = {
         dev: { 
-            center: 'rgba(247, 237, 226, 0.20)',
-            full: 'rgb(247, 237, 226)', 
-            corner: 'rgba(247, 237, 226, 0.10)' 
+            center: 'rgba(132, 0, 130, 0.20)',
+            full: 'rgb(132, 0, 130)', 
+            corner: 'rgba(132, 0, 130, 0.10)' 
         },
         visual: { 
             center: 'rgba(245, 202, 195, 0.18)', 
@@ -40,17 +40,17 @@ const Portfolio = () => {
 
     const currentGradient = gradientColors[activeSection] || gradientColors.dev;
 
-    // Persister l'Ã©tat du menu
+    // Persister l'état du menu
     useEffect(() => {
         localStorage.setItem('portfolioMenuOpen', JSON.stringify(isMenuOpen));
     }, [isMenuOpen]);
 
-    // GÃ©rer le scroll pour activer le bouton "scroll to top" et highlighter le menu
+    // Gérer le scroll pour activer le bouton "scroll to top" et highlighter le menu
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 300);
 
-            // DÃ©terminer la section active
+            // Déterminer la section active
             categories.forEach((category) => {
                 const element = document.getElementById(`section-${category.id}`);
                 if (element) {
@@ -81,7 +81,7 @@ const Portfolio = () => {
     return (
         <div className="portfolio-wrapper">
             <div className="portfolio-container">
-                {/* Div fixe avec gradients en arriÃ¨re-plan */}
+                {/* Div fixe avec gradients en arrière-plan */}
                 {isMenuOpen && (
                     <Motion.div
                         className="gradient-background"
@@ -95,7 +95,7 @@ const Portfolio = () => {
                     />
                 )}
 
-                {/* Menu latÃ©ral */}
+                {/* Menu latéral */}
                 <AnimatePresence>
                     {isMenuOpen && (
                         <Motion.nav
@@ -121,47 +121,58 @@ const Portfolio = () => {
                     )}
                 </AnimatePresence>
 
-                {/* Grille initiale */}
+                {/* Paragraphe introductif */}
                 <AnimatePresence>
                     {!isMenuOpen && (
                         <Motion.div
-                            className="categories-grid-container"
+                            className="intro-paragraph-container"
                             initial={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -1000 }}
                             transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
                         >
-                            <div className="categories-grid">
-                                {categories.map((category, index) => {
-                                    const IconComponent = category.icon;
-                                    return (
-                                        <Motion.button
-                                            key={category.id}
-                                            className="category-card"
-                                            onClick={() => setIsMenuOpen(true)}
-                                            style={{ backgroundColor: gradientColors[category.id].full }}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                                        >
-                                            {/* IcÃ´ne Ã  gauche (moitiÃ© dehors) */}
-                                            <div className="category-icon" style={{ 
-                                                color: '#ffffff',
-                                                backgroundColor: category.color 
-                                            }}>
-                                                <IconComponent size={44} strokeWidth={1.2} />
-                                            </div>
-
-                                            {/* Contenu */}
-                                            <div className="category-content">
-                                                <h3 className="category-title">{category.title}</h3>
-                                                {/* <div className="category-count">
-                                                    {category.projects.length} PROJET{category.projects.length > 1 ? 'S' : ''}
-                                                </div> */}
-                                            </div>
-                                        </Motion.button>
-                                    );
-                                })}
-                            </div>
+                            <p className="intro-paragraph">
+                                Since last April, my work at MFWA has taken me across diverse disciplines, from crafting{' '}
+                                <Motion.button
+                                    className="keyword-link"
+                                    onClick={() => setIsMenuOpen(true)}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    style={{ color: gradientColors['dev'].full }}
+                                >
+                                    digital solutions
+                                </Motion.button>{' '}
+                                and designing compelling{' '}
+                                <Motion.button
+                                    className="keyword-link"
+                                    onClick={() => setIsMenuOpen(true)}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    style={{ color: gradientColors['visual'].full }}
+                                >
+                                    visual communication
+                                </Motion.button>
+                                , to delivering precision in{' '}
+                                <Motion.button
+                                    className="keyword-link"
+                                    onClick={() => setIsMenuOpen(true)}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    style={{ color: gradientColors['translation'].full }}
+                                >
+                                    translation and content writing
+                                </Motion.button>
+                                , all while managing great projects through{' '}
+                                <Motion.button
+                                    className="keyword-link"
+                                    onClick={() => setIsMenuOpen(true)}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    style={{ color: gradientColors['analytics'].full }}
+                                >
+                                    analytics and strategic oversight
+                                </Motion.button>
+                                . Each endeavor reflects a commitment to transforming ideas into impactful outcomes that enhance work life through digitalization.
+                            </p>
                         </Motion.div>
                     )}
                 </AnimatePresence>
@@ -194,6 +205,7 @@ const Portfolio = () => {
                                             <ImageGallery images={category.gallery} />
                                         </Motion.div>
                                     )}
+
                                     {category.projects && category.projects.length > 0 && (
                                         <div className="projects-container">
                                             {category.projects.map((project, projectIndex) => (
