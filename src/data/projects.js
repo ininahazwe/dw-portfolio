@@ -28,6 +28,7 @@ import map1 from '../assets/map1.png';
 import map2 from '../assets/map2.png';
 import checkin from '../assets/checkin.png';
 import agenda from '../assets/agenda.png';
+import directory from '../assets/directory.png';
 
 export const categories = [
   {
@@ -57,8 +58,8 @@ export const categories = [
         id: 'visual-3',
         title: 'OGBV Campaign',
         description: 'Campaign against online gender-based violence',
-        thumbnail: map1,
-        fullsize: map1,
+        thumbnail: directory,
+        fullsize: directory,
         link: 'https://mfwa-articles-directory.vercel.app/',
         category: 'Campaign'
       },
@@ -66,8 +67,8 @@ export const categories = [
         id: 'visual-4',
         title: 'Institutional Design',
         description: 'NGIJ and partner events visuals',
-        thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=900&fit=crop',
+        thumbnail: map1,
+        fullsize: map1,
         link: 'https://inventory-app-two-sigma.vercel.app/',
         category: 'Institutional'
       },
@@ -75,8 +76,8 @@ export const categories = [
         id: 'visual-4',
         title: 'Institutional Design',
         description: 'NGIJ and partner events visuals',
-        thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=900&fit=crop',
+        thumbnail: checkin,
+        fullsize: checkin,
         link: 'https://wameca-checkin.vercel.app/',
         category: 'Institutional'
       },
@@ -84,9 +85,9 @@ export const categories = [
         id: 'visual-4',
         title: 'Institutional Design',
         description: 'NGIJ and partner events visuals',
-        thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-        fullsize: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=900&fit=crop',
-        link: 'https://wameca-agenda.vercel.app/',
+        thumbnail: agenda,
+        fullsize: agenda,
+        link: 'https://mfwa-articles-directory.vercel.app/',
         category: 'Institutional'
       },
     ],
