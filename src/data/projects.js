@@ -25,10 +25,10 @@ import trombi from '../assets/trombi.png';
 import wameca from '../assets/wameca.png';
 import webinar from '../assets/webinar.png';
 import map1 from '../assets/map1.png';
-import map2 from '../assets/map2.png';
 import checkin from '../assets/checkin.png';
 import agenda from '../assets/agenda.png';
 import directory from '../assets/directory.png';
+import inventory from '../assets/inventory.png';
 
 export const categories = [
   {
@@ -50,8 +50,8 @@ export const categories = [
         id: 'visual-2',
         title: 'WAMECA Flyers',
         description: 'Event design and promotional materials',
-        thumbnail: map2,
-        fullsize: map2,
+        thumbnail: inventory,
+        fullsize: inventory,
         category: 'Flyers'
       },
       {
