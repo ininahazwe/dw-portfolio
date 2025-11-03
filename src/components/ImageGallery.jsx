@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import './ImageGallery.css';
+import './imageGallery.css';
 
 const ImageGallery = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(null);
