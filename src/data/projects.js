@@ -186,7 +186,7 @@ export const categories = [
     gallery: [
       {
         id: 'visual-1',
-        title: 'NSS Scandals Campaign',
+        title: 'NSS Scandals Campaigns',
         description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth2,
         fullsize: fourth2,
@@ -194,24 +194,24 @@ export const categories = [
       },
       {
         id: 'visual-2',
-        title: 'WAMECA Flyers',
-        description: 'Event design and promotional materials',
+        title: 'NSS Scandals Campaigns',
+        description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth1,
         fullsize: fourth1,
         category: 'Flyers'
       },
       {
         id: 'visual-3',
-        title: 'OGBV Campaign',
-        description: 'Campaign against online gender-based violence',
+        title: 'NSS Scandals Campaigns',
+        description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth3,
         fullsize: fourth3,
         category: 'Campaign'
       },
       {
         id: 'visual-4',
-        title: 'Institutional Design',
-        description: 'NGIJ and partner events visuals',
+        title: 'NSS Scandals Campaigns',
+        description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth4,
         fullsize: fourth4,
         category: 'Institutional'
@@ -226,7 +226,7 @@ export const categories = [
       },
       {
         id: 'visual-6',
-        title: 'Video Thumbnails',
+        title: 'Ivory Coast Elections',
         description: 'Custom thumbnail designs for media',
         thumbnail: ci2,
         fullsize: ci2,
@@ -234,7 +234,7 @@ export const categories = [
       },
       {
         id: 'visual-7',
-        title: 'Newsletter Headers',
+        title: 'Ivory Coast Elections',
         description: 'Email marketing visual designs',
         thumbnail: ci3,
         fullsize: ci3,
