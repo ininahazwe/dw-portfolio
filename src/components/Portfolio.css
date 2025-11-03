@@ -6,7 +6,7 @@
     --bg-modal: #1a1a1a;
     --bg-project: #252525;
     --text-primary: #1a1a1a;
-    --text-secondary: #666;
+    --text-secondary: #3c3c3c;
     --text-light: #EBE7E0;
     --text-muted: #aaa;
     --text-subtle: #bbb;
@@ -55,26 +55,28 @@
     background-color: #ffffff;
     position: relative;
     z-index: 10;
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
 }
 
 .intro-paragraph {
-    font-size: 2.1rem;
+    font-size: 1.68rem;
     font-weight: 300;
     color: var(--text-primary);
     line-height: 1.5;
     letter-spacing: 0.015em;
     text-align: left;
     margin: 0;
-    margin-left: auto;
-    margin-right: auto;
-    border-left: 9px dotted lightgray;
-    padding-left: 20px;
+    flex: 1;
+    border-left: none;
+    padding-left: 0;
 }
 
 .keyword-link {
     background: none;
     border: none;
-    padding: 0.2rem 0.6rem;
+    padding: 0.2rem 0;
     margin: 0 -0.2rem;
     cursor: pointer;
     font-size: inherit;
@@ -96,8 +98,13 @@
     transform: translateY(0);
 }
 
+.image-gallery-grid{
+    margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
     .intro-paragraph-container {
+        gap: 2rem;
         padding: 8rem 1.5rem 4rem;
     }
 
@@ -109,11 +116,87 @@
     .keyword-link {
         padding: 0.15rem 0.4rem;
     }
+    .timeline-wrapper {
+        width: 60px;
+        min-height: 350px;
+    }
+
+    .timeline-date {
+        font-size: 0.65rem;
+    }
 }
 
 @media (max-width: 640px) {
     .intro-paragraph-container {
         padding: 6rem 1rem 3rem;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .intro-paragraph-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 6rem 1rem 3rem;
+    }
+
+    .timeline-wrapper {
+        width: 100%;
+        min-height: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .timeline-line {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        width: 100%;
+        height: 2px;
+        transform: translateY(-50%);
+        background: linear-gradient(
+                to right,
+                #1a1a1a 0%,
+                #8B7355 50%,
+                #1a1a1a 100%
+        );
+    }
+
+    .timeline-dot {
+        top: 50%;
+        left: auto;
+        transform: translateY(-50%);
+    }
+
+    .timeline-dot-start {
+        left: 10px;
+        top: 50%;
+    }
+
+    .timeline-dot-middle {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .timeline-dot-end {
+        right: 10px;
+        left: auto;
+        bottom: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .timeline-marker {
+        top: calc(50% + 25px) !important;
+        left: 0;
+        bottom: auto !important;
+    }
+
+    .timeline-marker-end {
+        left: auto;
+        right: 0;
     }
 
     .intro-paragraph {
@@ -378,6 +461,18 @@
     color: #888;
     font-weight: 300;
     letter-spacing: 0.025em;
+    padding: 3px 10px;
+    border-radius: 5px;
+
+    &.technology{
+        background: antiquewhite;
+    }
+    &.result{
+        background: beige;
+    }
+    &.link{
+        background: khaki;
+    }
 }
 
 .metadata-value {
@@ -464,4 +559,78 @@
         width: 40px;
         height: 40px;
     }
+}
+
+.timeline-wrapper {
+    position: relative;
+    width: 80px;
+    flex-shrink: 0;
+    height: 100%;
+    min-height: 330px;
+}
+
+.timeline-line {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(
+            to bottom,
+            #e1e1e1 0%,
+            #FFE3C0 50%,
+            #aeaeae 100%
+    );
+    transform-origin: top;
+}
+
+.timeline-dot {
+    position: absolute;
+    right: 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #cacaca;
+    border: 2px solid #d5d5d5;
+    z-index: 2;
+}
+
+.timeline-dot-start {
+    top: 15px;
+}
+
+.timeline-dot-middle {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.timeline-dot-end {
+    bottom: 15px;
+}
+
+.timeline-marker {
+    position: absolute;
+    right: 35px;
+    left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timeline-marker:first-of-type {
+    top: 10px;
+}
+
+.timeline-marker-end {
+    bottom: 10px;
+}
+
+.timeline-date {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #c8c8c8;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: right;
 }

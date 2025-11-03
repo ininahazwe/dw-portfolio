@@ -29,6 +29,10 @@ import checkin from '../assets/checkin.png';
 import agenda from '../assets/agenda.png';
 import directory from '../assets/directory.png';
 import inventory from '../assets/inventory.png';
+import looker1 from '../assets/lookerStudio1.png';
+import sheet1 from '../assets/sheet1.png';
+import looker3 from '../assets/lookerStudio3.png';
+import drive1 from '../assets/drive1.png';
 
 export const categories = [
   {
@@ -39,58 +43,140 @@ export const categories = [
     gallery: [
       {
         id: 'visual-1',
-        title: 'NSS Scandals Campaign',
-        description: 'Awareness campaign on NSS scandals',
+        title: 'Interactive data visualization map',
+        description: 'Dynamic mapping platform for West African media data visualization, with backend administration system"',
         thumbnail: map1,
         fullsize: map1,
         link: 'https://leaflet-map-sigma.vercel.app/',
-        category: 'Campaign'
+        category: 'Application'
       },
       {
         id: 'visual-2',
-        title: 'WAMECA Flyers',
-        description: 'Event design and promotional materials',
+        title: 'Assets management',
+        description: 'Management of furniture inventory and IT assets',
         thumbnail: inventory,
         fullsize: inventory,
-        category: 'Flyers'
+        category: 'Application',
+        link: 'https://inventory-app-two-sigma.vercel.app/'
       },
       {
         id: 'visual-3',
-        title: 'OGBV Campaign',
-        description: 'Campaign against online gender-based violence',
+        title: 'Articles catalog',
+        description: 'Comprehensive catalog of MFWA website articles with advanced search functionality',
         thumbnail: directory,
         fullsize: directory,
         link: 'https://mfwa-articles-directory.vercel.app/',
-        category: 'Campaign'
+        category: 'Application',
       },
       {
         id: 'visual-4',
-        title: 'Institutional Design',
-        description: 'NGIJ and partner events visuals',
-        thumbnail: map1,
-        fullsize: map1,
-        link: 'https://inventory-app-two-sigma.vercel.app/',
-        category: 'Institutional'
-      },
-      {
-        id: 'visual-4',
-        title: 'Institutional Design',
-        description: 'NGIJ and partner events visuals',
+        title: 'Registration platform',
+        description: 'Participant registration platform for events with real-time data visualization',
         thumbnail: checkin,
         fullsize: checkin,
         link: 'https://wameca-checkin.vercel.app/',
-        category: 'Institutional'
+        category: 'Application',
       },
       {
-        id: 'visual-4',
-        title: 'Institutional Design',
-        description: 'NGIJ and partner events visuals',
+        id: 'visual-5',
+        title: 'Live event agenda',
+        description: 'Real-time schedule platform with QR code for events',
         thumbnail: agenda,
         fullsize: agenda,
-        link: 'https://mfwa-articles-directory.vercel.app/',
-        category: 'Institutional'
+        link: 'https://wameca-agenda.vercel.app/',
+        category: 'Application',
       },
     ],
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics & Project Management',
+    icon: BarChart3,
+    color: '#9B8B7E',
+    projects: [
+      {
+        name: 'Looker Studio Dashboard',
+        description: 'Configuration of automated dashboards for real-time monitoring of communication metrics.',
+        tech: ['Looker Studio', 'Google Sheets API', 'Data Studio'],
+        period: 'August 2025',
+        metrics: 'Automated interactive dashboard',
+        gallery: [
+          {
+            id: 'visual-1',
+            title: 'Looker Studio Dashboard',
+            description: 'Linking data sheets to Looker Studio to visualize them interactively',
+            thumbnail: looker1,
+            fullsize: looker1,
+            link: 'https://lookerstudio.google.com/u/1/reporting/994c23fb-e32e-45ea-9863-4691340ed88d/page/6zXD',
+            category: 'Metrics'
+          },
+          {
+            id: 'visual-1',
+            title: 'Looker Studio Dashboard',
+            description: 'Linking data sheets to Looker Studio to visualize them interactively',
+            thumbnail: looker3,
+            fullsize: looker3,
+            link: 'https://lookerstudio.google.com/u/1/reporting/994c23fb-e32e-45ea-9863-4691340ed88d/page/6zXD',
+            category: 'Metrics'
+          },
+        ]
+      },
+      {
+        name: 'Social Media Reports',
+        description: 'Detailed weekly and monthly performance reports on all social networks (Twitter, Facebook, LinkedIn).',
+        period: 'April - October 2025',
+        metrics: '24+ reports produced',
+        tech: ['Excel', 'Analytics', 'Visualization'],
+        gallery: [
+          {
+            id: 'visual-1',
+            title: 'Social Media Reports',
+            description: 'Detailed weekly and monthly performance reports on all social networks (Twitter, Facebook, LinkedIn).',
+            thumbnail: sheet1,
+            fullsize: sheet1,
+            category: 'Analytics'
+          }
+        ]
+      },
+      {
+        name: 'Google Drive & Calendars Setup',
+        description: 'Complete structuring and organization of shared Google Drive with permissions management. Setup and synchronization of shared calendars for team collaboration and scheduling.',
+        period: 'May - June 2025',
+        metrics: 'Fully structured system',
+        tech: ['Google Workspace', 'Google Drive', 'Google Calendar', 'Organization', 'Permissions'],
+        gallery: [
+          {
+            id: 'visual-1',
+            title: 'Google Drive & Calendars Setup',
+            description: 'Complete structuring and organization of shared Google Drive with permissions management. Setup and synchronization of shared calendars for team collaboration and scheduling.',
+            thumbnail: drive1,
+            fullsize: drive1,
+            category: 'Analytics'
+          }
+        ]
+      },
+      {
+        name: 'Articles Metrics',
+        description: 'Tracking and performance analysis of published articles: views, engagement, geographic reach.',
+        period: 'April - October 2025',
+        metrics: 'Monthly tracking',
+        tech: ['Google Analytics', 'Web metrics'],
+        link: 'https://lookerstudio.google.com/u/1/reporting/994c23fb-e32e-45ea-9863-4691340ed88d/page/p_mxyw8ocfvd',
+      },
+      {
+        name: 'Evaluation Tables',
+        description: 'Creation of evaluation grids for social networks and content performance.',
+        period: 'June 2025',
+        tech: ['Excel', 'KPI tracking']
+      },
+      {
+        name: 'Meetings & Minutes',
+        description: 'Participation and documentation of weekly communication team and project managers meetings.',
+        period: 'April - October 2025',
+        metrics: '50+ documented meetings',
+        tech: ['Documentation', 'Note-taking']
+      }
+    ]
   },
   {
     id: 'visual',
@@ -300,7 +386,7 @@ export const categories = [
       },
     ],
     projects: [
-      
+
     ]
   },
   {
@@ -313,14 +399,14 @@ export const categories = [
         name: 'Article Translations',
         description: 'Translation and revision of press articles on press freedom and violations (FR/EN), including urgent alerts.',
         period: 'April - October 2025',
-        metrics: '100+ articles translated',
+        metrics: '60+ articles translated',
         tech: ['French', 'English', 'Revision']
       },
       {
         name: 'Event Content',
-        description: 'Translation of flyers, video scripts, press releases for MFWA and WAMECA events.',
+        description: 'Translation of flyers, video scripts, press releases for MFWA and affiliate projects.',
         period: 'April - October 2025',
-        metrics: '50+ documents translated',
+        metrics: '30+ documents translated',
         tech: ['Official documents', 'Marketing']
       },
       {
@@ -339,60 +425,4 @@ export const categories = [
       }
     ]
   },
-  {
-    id: 'analytics',
-    title: 'Analytics & Project Management',
-    icon: BarChart3,
-    color: '#9B8B7E',
-    projects: [
-      {
-        name: 'Looker Studio Dashboard',
-        description: 'Configuration of automated dashboards for real-time monitoring of communication metrics.',
-        tech: ['Looker Studio', 'Google Sheets API', 'Data Studio'],
-        period: 'August 2025',
-        metrics: 'Automated interactive dashboard'
-      },
-      {
-        name: 'Social Media Reports',
-        description: 'Detailed weekly and monthly performance reports on all social networks (Twitter, Facebook, LinkedIn).',
-        period: 'April - October 2025',
-        metrics: '24+ reports produced',
-        tech: ['Excel', 'Analytics', 'Visualization']
-      },
-      {
-        name: 'Google Drive & Calendars Setup',
-        description: 'Complete structuring and organization of shared Google Drive with permissions management. Setup and synchronization of shared calendars for team collaboration and scheduling.',
-        period: 'May - June 2025',
-        metrics: 'Fully restructured system',
-        tech: ['Google Workspace', 'Google Drive', 'Google Calendar', 'Organization', 'Permissions']
-      },
-      {
-        name: 'Articles Metrics',
-        description: 'Tracking and performance analysis of published articles: views, engagement, geographic reach.',
-        period: 'April - October 2025',
-        metrics: 'Monthly tracking',
-        tech: ['Google Analytics', 'Web metrics']
-      },
-      {
-        name: 'Evaluation Tables',
-        description: 'Creation of evaluation grids for social networks and content performance.',
-        period: 'June 2025',
-        tech: ['Excel', 'KPI tracking']
-      },
-      {
-        name: 'Meetings & Minutes',
-        description: 'Participation and documentation of weekly communication team and project managers meetings.',
-        period: 'April - October 2025',
-        metrics: '50+ documented meetings',
-        tech: ['Documentation', 'Note-taking']
-      },
-      {
-        name: 'Digital Tools Survey',
-        description: 'Creation and deployment of survey on digital tools used by communication team.',
-        period: 'May 2025',
-        metrics: 'Interactive form',
-        tech: ['Google Forms', 'Analysis']
-      }
-    ]
-  }
 ];

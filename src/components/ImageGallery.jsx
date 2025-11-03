@@ -111,7 +111,7 @@ const ImageGallery = ({ images }) => {
                 <div className="gallery-modal-info">
                   <h3 className="modal-title">{selectedImage.title}</h3>
                   <p className="modal-description">{selectedImage.description}</p>
-                  <span className="modal-category">{selectedImage.category}</span>
+                  <span className="modal-category"><a href={selectedImage.link} target="_blank" rel="noopener noreferrer">Explore me</a></span>
                 </div>
               </div>
 

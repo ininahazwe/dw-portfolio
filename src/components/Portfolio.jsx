@@ -4,7 +4,6 @@ import { categories } from '../data/projects';
 import { ArrowUp } from 'lucide-react';
 import ImageGallery from './ImageGallery';
 import './Portfolio.css';
-import { div } from 'framer-motion/client';
 
 const Portfolio = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(() => {
@@ -130,6 +129,55 @@ const Portfolio = () => {
                             exit={{ opacity: 0, y: -1000 }}
                             transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
                         >
+                            {/* Timeline verticale */}
+                            <div className="timeline-wrapper">
+                                <Motion.div
+                                    className="timeline-line"
+                                    initial={{ scaleY: 0 }}
+                                    animate={{ scaleY: 1 }}
+                                    transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
+                                />
+
+                                <Motion.div
+                                    className="timeline-dot timeline-dot-start"
+                                    initial={{ scale: 0, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{ duration: 0.4, delay: 0.2 }}
+                                />
+
+                                <Motion.div
+                                    className="timeline-marker"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.6 }}
+                                >
+                                    <span className="timeline-date">April 2025</span>
+                                </Motion.div>
+
+                                <Motion.div
+                                    className="timeline-dot timeline-dot-middle"
+                                    initial={{ scale: 0, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{ duration: 0.4, delay: 0.8 }}
+                                />
+
+                                <Motion.div
+                                    className="timeline-dot timeline-dot-end"
+                                    initial={{ scale: 0, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{ duration: 0.4, delay: 1.0 }}
+                                />
+
+                                <Motion.div
+                                    className="timeline-marker timeline-marker-end"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 1.2 }}
+                                >
+                                    <span className="timeline-date">October 2025</span>
+                                </Motion.div>
+                            </div>
+
                             <p className="intro-paragraph">
                                 Since last April, my work at MFWA has taken me across diverse disciplines, from crafting{' '}
                                 <Motion.button
@@ -180,7 +228,7 @@ const Portfolio = () => {
                 {/* Contenu principal avec sections */}
                 {isMenuOpen && (
                     <div className="main-content">
-                        {categories.map((category, categoryIndex) => (
+                        {categories.map((category) => (
                             <section
                                 key={category.id}
                                 id={`section-${category.id}`}
@@ -200,7 +248,6 @@ const Portfolio = () => {
                                             whileInView={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.5 }}
                                             viewport={{ once: false, amount: 0.1 }}
-                                            style={{ marginBottom: '3rem' }}
                                         >
                                             <ImageGallery images={category.gallery} />
                                         </Motion.div>
@@ -222,26 +269,35 @@ const Portfolio = () => {
                                                 >
                                                     <h3 className="project-name">{project.name}</h3>
                                                     <p className="project-description">{project.description}</p>
-
+                                                    {project.gallery && (
+                                                        <Motion.div
+                                                            initial={{ opacity: 0, y: 20 }}
+                                                            whileInView={{ opacity: 1, y: 0 }}
+                                                            transition={{ duration: 0.5 }}
+                                                            viewport={{ once: false, amount: 0.1 }}
+                                                            style={{ marginBottom: '0' }}
+                                                        >
+                                                            <ImageGallery images={project.gallery} />
+                                                        </Motion.div>
+                                                    )}
                                                     <div className="project-metadata">
                                                         {project.tech && (
                                                             <div className="metadata-item">
-                                                                <span className="metadata-label">Technologies:</span>
+                                                                <span className="metadata-label technology">Technologies:</span>
                                                                 <span className="metadata-value">{project.tech.join(', ')}</span>
-                                                            </div>
-                                                        )}
-
-                                                        {project.period && (
-                                                            <div className="metadata-item">
-                                                                <span className="metadata-label">Période:</span>
-                                                                <span className="metadata-value">{project.period}</span>
                                                             </div>
                                                         )}
 
                                                         {project.metrics && (
                                                             <div className="metadata-item">
-                                                                <span className="metadata-label">Résultats:</span>
+                                                                <span className="metadata-label result">Résultats:</span>
                                                                 <span className="metadata-value">{project.metrics}</span>
+                                                            </div>
+                                                        )}
+
+                                                        {project.link && project.link.length > 0 && (
+                                                            <div className="metadata-item">
+                                                                <span className="metadata-label link"><a href={project.link} target="_blank">@ Link</a></span>
                                                             </div>
                                                         )}
                                                     </div>
