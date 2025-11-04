@@ -104,7 +104,7 @@ export const categories = [
           {
             id: 'visual-1',
             title: 'Looker Studio Dashboard',
-            description: 'Linking data sheets to Looker Studio to visualize them interactively',
+            description: 'Linking data sheets to Looker Studio to visualize them interactively - This application seamlessly connects data sheets to Looker Studio, enabling dynamic and interactive visualization of key metrics and performance indicators. The system allows users to perform complex analysis of results through comprehensive data exploration, filtering, and comparison capabilities. Users can apply multiple filters to drill down into specific datasets, identify trends, and generate customized views tailored to their analytical needs. The application also enables the download of filtered data in various formats, making it easy to create detailed reports, share insights with stakeholders, and conduct further offline analysis. This integration transforms raw data into actionable intelligence through intuitive dashboards and real-time reporting.',
             thumbnail: looker1,
             fullsize: looker1,
             link: 'https://lookerstudio.google.com/u/1/reporting/994c23fb-e32e-45ea-9863-4691340ed88d/page/6zXD',
@@ -113,7 +113,7 @@ export const categories = [
           {
             id: 'visual-1',
             title: 'Looker Studio Dashboard',
-            description: 'Linking data sheets to Looker Studio to visualize them interactively',
+            description: 'Linking data sheets to Looker Studio to visualize them interactively - This application seamlessly connects data sheets to Looker Studio, enabling dynamic and interactive visualization of key metrics and performance indicators. The system allows users to perform complex analysis of results through comprehensive data exploration, filtering, and comparison capabilities. Users can apply multiple filters to drill down into specific datasets, identify trends, and generate customized views tailored to their analytical needs. The application also enables the download of filtered data in various formats, making it easy to create detailed reports, share insights with stakeholders, and conduct further offline analysis. This integration transforms raw data into actionable intelligence through intuitive dashboards and real-time reporting.',
             thumbnail: looker3,
             fullsize: looker3,
             link: 'https://lookerstudio.google.com/u/1/reporting/994c23fb-e32e-45ea-9863-4691340ed88d/page/6zXD',
