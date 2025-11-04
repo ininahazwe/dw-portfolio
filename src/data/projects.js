@@ -44,7 +44,7 @@ export const categories = [
       {
         id: 'visual-1',
         title: 'Interactive data visualization map',
-        description: 'Dynamic mapping platform for West African media data visualization, with backend administration system"',
+        description: 'Dynamic mapping platform for West African media data visualization, with backend administration system',
         thumbnail: map1,
         fullsize: map1,
         link: 'https://leaflet-map-sigma.vercel.app/',
@@ -53,7 +53,7 @@ export const categories = [
       {
         id: 'visual-2',
         title: 'Assets management',
-        description: 'Management of furniture inventory and IT assets',
+        description: 'Management of furniture inventory and IT assets - This application provides comprehensive tracking and management of the organization"s furniture and IT equipment throughout their entire lifecycle. The system generates a unique QR code for each asset unit, which can be affixed directly to the item. By scanning this QR code, users can instantly access the complete history of the asset, including purchase information (acquisition date, supplier, cost), assignment details (current user, department, location), condition status, maintenance and repair history, and total cost of ownership. The system provides real-time, accurate data on the entire furniture and IT asset inventory, enabling instant visibility into asset availability and utilization, proactive maintenance planning, budget tracking and cost optimization, streamlined asset allocation and transfers, and automated reporting and compliance tracking.',
         thumbnail: inventory,
         fullsize: inventory,
         category: 'Application',
