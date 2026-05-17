@@ -1,0 +1,253 @@
+/* --- CONFIGURATION GENERALE --- */
+.judges-section {
+    background-color: #e7e5dd;
+    min-height: 100vh;
+    font-family: sans-serif;
+    color: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* En-tête global de la grille */
+.judges-main-header {
+    text-align: center;
+    padding: 40px 0 20px;
+    user-select: none;
+}
+
+.judges-main-score {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: .075em;
+    margin: 0 0 4px 0;
+}
+
+.judges-main-subtitle {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* --- GRILLE DES 6 BLOCS INITIALS --- */
+.judges-grid-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    box-sizing: border-box;
+}
+
+.judges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 30px;
+    list-style: none;
+    padding: 34px 0 0;
+    margin: 0;
+}
+
+.judges-grid-item {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+    .judges-grid-item { flex: 1 1 calc(50% - 20px); }
+}
+@media (max-width: 640px) {
+    .judges-grid-item { flex: 1 1 100%; }
+}
+
+/* Style du grand bloc */
+.judge-card-rect {
+    padding: 25px 25px 25px 110px;
+    min-height: 110px;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.judge-card-bg-layer {
+    position: absolute;
+    inset: 0;
+    background-color: #dcd8ce;
+    z-index: -1;
+}
+
+.judge-card-avatar {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    overflow: hidden;
+}
+
+.judge-card-avatar img, .menu-tab-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(125%);
+    mix-blend-mode: multiply;
+}
+
+.judge-card-name {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .075em;
+    margin: 0;
+}
+
+.judge-card-title {
+    font-size: 11px;
+    color: #666;
+    font-weight: 500;
+    margin: 2px 0 12px 0;
+}
+
+.judge-card-metrics {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.judge-card-metric-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+.judge-card-top-score {
+    position: absolute;
+    right: 20px;
+    top: -16px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: .075em;
+}
+
+/* --- LE MENU DU HAUT (10% DE HAUTEUR) --- */
+.judges-top-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    background-color: #dcd8ce;
+    border-bottom: 1px solid #c8c2b4;
+    z-index: 50;
+}
+
+/* Onglet miniature reprenant le design du bloc */
+.menu-tab-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 15px 0 65px; /* Espace pour le mini avatar à gauche */
+    cursor: pointer;
+    border-right: 1px solid #c8c2b4;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.menu-tab-item:last-child {
+    border-right: none;
+}
+
+/* Mini Avatar */
+.menu-tab-avatar {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background-color: #ccc;
+    overflow: hidden;
+}
+
+/* Mini Nom */
+.menu-tab-name {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 25px; /* Évite la collision avec le score à droite */
+}
+
+/* Mini Note en haut à droite de l'onglet */
+.menu-tab-score {
+    position: absolute;
+    right: 12px;
+    top: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .05em;
+}
+
+/* État actif (Onglet sélectionné) */
+.menu-tab-item.is-active {
+    background-color: #e7e5dd;
+}
+
+
+/* --- ZONE PORTAIL (90% DE HAUTEUR POUR LES PAGES) --- */
+.judge-view-portal {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+.judge-view-expanded-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #dcd8ce;
+    z-index: 1;
+}
+
+/* Conteneur global qui va accueillir tes composants de pages */
+.judge-view-inner-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto; /* Permet le scroll si ta page est très longue */
+}
+
+/* Bouton Fermer persistant dans le coin supérieur */
+.judge-portal-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 100; /* Reste au-dessus de ta page */
+}
