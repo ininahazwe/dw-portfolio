@@ -4,7 +4,7 @@ import '../styles/Judges.css';
 
 // --- 1. IMPORTATION DE TES FUTURES PAGES DE CONTENU ---
 // Tu créeras ces fichiers juste après
-import FrancescoProfile from '../profiles/FrancescoProfile';
+import MediascapeProfile from '../profiles/FrancescoProfile';
 import ConstructionAnimationLottie from "./ConstructionAnimationLottie.jsx";
 // import SergeyProfile from './profiles/SergeyProfile';
 // Import ZhouProfile from './profiles/ZhouProfile';
@@ -15,7 +15,7 @@ import ConstructionAnimationLottie from "./ConstructionAnimationLottie.jsx";
 const judgesData = [
     { id: 'francesco-carli', name: 'Activity Tracker', title: 'Creative & Art Director', avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80', totalScore: 'NEW', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
     { id: 'michi-del-rosso', name: 'Media Index', title: 'Co-Founder & CD', avatarUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&h=150&q=80', totalScore: 'NEW', scores: [{ label: 'UI', val: '8' }, { label: 'UX', val: '8' }, { label: 'INN', val: '8' }] },
-    { id: 'francesco-carli', name: 'Mediascape', title: 'Creative & Art Director', avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
+    { id: 'mediascape', name: 'Mediascape', title: 'Creative & Art Director', avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
     { id: 'sergey-dubovenko', name: 'It Asset Inventory', title: 'CEO & Founder', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.5' }, { label: 'UX', val: '8.5' }, { label: 'INN', val: '8.5' }] },
     { id: 'zhou-wen-jun', name: 'Red List', title: 'Galery of West Africa’s slain journalists since 1990', avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.2' }, { label: 'UX', val: '8.3' }] },
     { id: 'mattia-rinaudo', name: 'Event registration', title: 'Design Manager', avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.2' }, { label: 'UX', val: '8.2' }, { label: 'INN', val: '8.2' }] },
@@ -26,7 +26,7 @@ export const JudgesSection = () => {
 
     // --- 2. DICTIONNAIRE QUI ASSOCIE L'ID À SA PAGE CORRESPONDANTE ---
     const profilePages = {
-        'francesco-carli': <FrancescoProfile />,
+        'mediascape': <MediascapeProfile />,
         //'sergey-dubovenko': <SergeyProfile />,
         // Tu ajouteras les autres ici au fur et à mesure :
         // 'zhou-wen-jun': <ZhouProfile />,

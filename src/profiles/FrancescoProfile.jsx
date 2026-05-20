@@ -5,8 +5,8 @@ const sectionData = [
     {
         id: 1,
         sectionName: "CRITÈRE #1",
-        title: "Technique & Précision",
-        description: "Analyse approfondie de la posture, de la fluidité des mouvements et de l'exécution technique globale lors des phases de transition.",
+        title: "Design & UX Enhancement",
+        description: "Comprehensive redesign and user experience improvements across all interface elements, ensuring better accessibility, intuitive navigation, and modern visual standards",
         duration: "Coef. X4",
         category: "Évaluation Technique",
         imgUrl: "https://via.placeholder.com/400",
@@ -15,8 +15,8 @@ const sectionData = [
     {
         id: 2,
         sectionName: "CRITÈRE #2",
-        title: "Expression Artistique",
-        description: "Évaluation de la musicalité, de l'originalité de la chorégraphie et de la capacité à transmettre une émotion forte au public.",
+        title: "Production Deployment",
+        description: "Full installation and configuration of the platform and its database on MFWA's organizational servers, ensuring data security and operational continuity",
         duration: "Coef. X3",
         category: "Performance",
         imgUrl: "https://via.placeholder.com/400",
@@ -25,8 +25,8 @@ const sectionData = [
     {
         id: 3,
         sectionName: "CRITÈRE #3",
-        title: "Expérience & Background",
-        description: "Plus de 15 ans passés sur la scène internationale en tant que chorégraphe et consultant pour les plus grands événements mondiaux.",
+        title: "Performance Optimization",
+        description: "Advanced caching strategies and database optimization to ensure fast loading times and seamless interaction across 16 West African countries' data.",
         duration: "Historique",
         category: "Parcours Pro",
         imgUrl: "https://via.placeholder.com/400",
@@ -51,8 +51,8 @@ const FrancescoProfile = () => {
         <div className="profile-internal-content">
 
             <div className="profile-intro">
-                <h2>À propos de Francesco</h2>
-                <p>Découvrez ses critères d'évaluation majeurs et son parcours à travers notre galerie interactive.</p>
+                <h2>MEDIASCAPE</h2>
+                <p>Interactive map visualizing media freedom, press environment, and digital rights across West Africa</p>
             </div>
 
             <div className="stack_wrapper">
