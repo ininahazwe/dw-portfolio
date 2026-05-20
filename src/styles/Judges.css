@@ -1,6 +1,6 @@
 /* --- CONFIGURATION GENERALE --- */
 .judges-section {
-    background-color: #e7e5dd;
+    /*background-color: #e7e5dd;*/
     min-height: 100vh;
     font-family: sans-serif;
     color: #1a1a1a;
@@ -145,7 +145,7 @@
     width: 100%;
     height: 10vh;
     display: flex;
-    background-color: #dcd8ce;
+    /*background-color: #dcd8ce;*/
     border-bottom: 1px solid #c8c2b4;
     z-index: 50;
 }
@@ -221,7 +221,7 @@
 .judge-view-expanded-bg {
     position: absolute;
     inset: 0;
-    background-color: #dcd8ce;
+    /*background-color: #dcd8ce;*/
     z-index: 1;
 }
 
@@ -250,4 +250,201 @@
     text-transform: uppercase;
     cursor: pointer;
     z-index: 100; /* Reste au-dessus de ta page */
+}
+
+/* ==========================================================================
+   CONTENEUR GENERAL DU PROFIL (AÉRÉ - SCREENSHOT 1)
+   ========================================================================== */
+
+.profile-internal-content {
+    padding: 4rem 10% 2rem 10%; /* Augmentation drastique des marges internes gauche/droite (10%) */
+    max-width: 1200px;          /* On centre et on limite la largeur pour que ça reste élégant sur grand écran */
+    margin: 0 auto;             /* Centrage horizontal */
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+    scrollbar-width: none;            /* Masque sur Firefox */
+    -ms-overflow-style: none;
+}
+
+.profile-internal-content::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-intro {
+    margin-bottom: 5rem;
+    color: #000;
+}
+
+.profile-intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   GALERIE STACKING CARDS (SCREENSHOT 2)
+   ========================================================================== */
+
+.stack_wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8rem; /* Grand espace entre les cartes pour bien scroller avant l'empilement */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.stack_card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
+    /*background-color: #eaf1ea;*/
+    border-radius: 1rem;
+    height: 26rem;
+    padding: 1.5rem;
+    cursor: pointer;
+
+    /* Comportement Sticky */
+    position: sticky;
+    /* 'top' est injecté dynamiquement par le React (calcul d'escalier) */
+
+    /* Ombres pour accentuer l'effet de superposition des cartes */
+    box-shadow: 0px -15px 35px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+/* Style spécifique pour la TOUTE DERNIÈRE carte */
+.stack_card.last-card {
+    /*background-color: #d1ebd1;  Optionnel : une couleur légèrement différente ou plus dense */
+    box-shadow: 0px -30px 50px rgba(0, 0, 0, 0.15); /* Ombre plus forte pour marquer la fermeture */
+    z-index: 99; /* S'assure de passer au-dessus de l'effet d'escalier des autres */
+    height: 28rem; /* Légèrement plus haute pour couvrir parfaitement les petits décalages du dessous */
+}
+
+.stack_card:hover:not(.last-card) {
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   INTERIEUR DES CARTES (TEXTES & VISUELS)
+   ========================================================================== */
+
+.left-card {
+    color: #000;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 8px;
+}
+
+.section-name {
+    color: #12740b;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.projects-title {
+    margin: 0;
+    font-family: 'Avenir Next', Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.projects-description {
+    color: rgba(0, 0, 0, 0.72);
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.bottom-part {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    align-self: stretch;
+    align-items: center;
+    width: 100%;
+}
+
+.inner-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-self: stretch;
+    align-items: center;
+    flex: 1;
+}
+
+.duration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.projects-description.duration {
+    color: rgba(0, 0, 0, 0.56);
+    margin-bottom: .25rem;
+    font-size: 0.85rem;
+}
+
+.projects-title.duration {
+    color: #12740b;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.open-link {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    background-color: #deeade;
+    border-radius: .5rem;
+    align-self: stretch;
+    padding: 12px 16px;
+    margin-top: auto;
+}
+
+.category {
+    color: #1a1a1a;
+    flex: 1;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.div-block-107 {
+    display: flex;
+    background-color: #deebde;
+    border-radius: .9rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.div-block-107 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.profile-footer-spacer {
+    height: 35vh; /* Donne de la profondeur en bas de page pour finir le scroll proprement */
 }

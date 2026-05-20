@@ -1,101 +1,107 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-// Structure des sous-pages (le contenu qui s'injecte dans le détail)
-const SUB_LINKS_DATA: Record<string, { title: string; href: string; isPodcast?: boolean }[]> = {
-    "me-van-a-operar": [
-        { title: "Qué tengo que saber", href: "https://guiacirugiacardiaca.com/t/que-tengo-que-saber/" },
-        { title: "Cambia de hábitos", href: "https://guiacirugiacardiaca.com/t/cambia-de-habitos/" },
-        { title: "Alimentación", href: "https://guiacirugiacardiaca.com/t/alimentacion/" },
-        { title: "Actividad física", href: "https://guiacirugiacardiaca.com/t/actividad-fisica/" },
-        { title: "El equipo que te acompaña en la cirugía", href: "#", isPodcast: true },
-        // ... Tu peux ajouter les autres ici
-    ],
-    "tengo-un-problema-en-el-corazon": [
-        { title: "Conoce tu corazón", href: "#" }
-    ]
-};
+// Si tu as besoin d'un fichier CSS dédié comme dans ton exemple :
+import '../styles/card.css';
 
-const CARDS_DATA = [
-    { id: 1, slug: "tengo-un-problema-en-el-corazon", color: "#b9e7de", name: "El corazón", phrase: "Conoce tu corazón", onSrc: "...", offSrc: "..." },
-    { id: 2, slug: "me-van-a-operar", color: "#ffd05b", name: "Me van a operar", phrase: "Preparación", onSrc: "...", offSrc: "..." },
-    { id: 3, slug: "antes-de-la-cirugia", color: "#40d39c", name: "Antes de la cirugía", phrase: "Preparación", onSrc: "...", offSrc: "..." },
-    // ... Les autres cartes
+const SUB_LINKS_DATA = [
+    {
+        id: 'tengo-un-problema-en-el-corazon',
+        name: 'Tengo un problema en el corazón',
+        title: 'El corazón',
+        avatarUrl: 'https://guiacirugiacardiaca.com/wp-content/uploads/2021/12/GRE_HOME_Corazon_Color.svg',
+        totalScore: '8.8',
+        profileUrl: '/guia/tengo-un-problema-en-el-corazon/',
+        isPodcast: false,
+        scores: [
+            { label: 'UI', val: '8.7' },
+            { label: 'UX', val: '8.7' },
+            { label: 'INN', val: '9' }
+        ]
+    },
+    {
+        id: 'bienvenido-a-la-guia-sonora',
+        name: 'Bienvenido a la guía de cirugía cardiaca',
+        title: 'Historia Sonora',
+        avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80',
+        totalScore: '8.5',
+        profileUrl: 'https://open.acast.com/public/streams/62b098b418ccdd00129dd1f3/episodes/62b098b95d938d00157299b8.mp3',
+        isPodcast: true,
+        scores: [
+            { label: 'UI', val: '8.5' },
+            { label: 'UX', val: '8.5' },
+            { label: 'AUD', val: '9.0' }
+        ]
+    },
+    {
+        id: 'antes-de-la-cirugia',
+        name: 'Antes de la cirugía cardíaca',
+        title: 'Preparación',
+        avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80',
+        totalScore: '8.2',
+        profileUrl: '/guia/antes-de-la-cirugia/',
+        isPodcast: false,
+        scores: [
+            { label: 'UI', val: '8.2' },
+            { label: 'UX', val: '8.3' },
+            { label: 'INN', val: '8.1' }
+        ]
+    }
 ];
 
-export default function HomeHeader() {
-    const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
-
-    // On trouve les données de la carte sélectionnée pour récupérer sa couleur
-    const selectedCard = CARDS_DATA.find(c => c.slug === selectedSlug);
-
+// Exemple de composant calqué sur ton JudgesSection pour afficher ces liens
+export const Cards = () => {
     return (
-        <div className="home_header">
-            <div className="homeheader_left">
-                <div className="section_title">¿QUÉ ES ESTO?</div>
-                <div className="text">...</div>
-            </div>
+        <section className="sublinks">
+            <div className="container">
+                <div className="sublinks__wrapper">
 
-            {/* Le conteneur change de comportement si une carte est sélectionnée */}
-            <div className={`fancy_cards ${selectedSlug ? 'has-selected' : ''}`}>
+                    <header className="sublinks__header">
+                        <h3 className="sublinks__score">8.50</h3>
+                        <h5 className="sublinks__subtitle">Media de Contenidos</h5>
+                    </header>
 
-                {/* Le titre se cache en CSS si has-selected est présent */}
-                <div className="toptitle">¿EN QUÉ MOMENTO TE ENCUENTRAS?</div>
+                    <ul className="sublinks__list">
+                        {SUB_LINKS_DATA.map((item) => (
+                            <li key={item.id} className="sublink-card">
+                                <div className="sublink-card__wrapper">
 
-                <div className="fancy_cards_wr">
+                                    <a href={item.profileUrl} className="sublink-card__link" aria-label={`Link ${item.name}`} />
 
-                    {/* Section Liste des cartes */}
-                    <div className="cards_list_container">
-                        {CARDS_DATA.map((card) => {
-                            const isSelected = selectedSlug === card.slug;
-                            return (
-                                <div
-                                    key={card.id}
-                                    className={`fancy_card ${isSelected ? 'selected' : ''}`}
-                                    onClick={() => setSelectedSlug(isSelected ? null : card.slug)}
-                                >
-                                    <div className="content">
-                                        <div className="basebg" style={{ backgroundColor: card.color }}></div>
-                                        <div className="info">
-                                            <div className="name">{card.name}</div>
-                                            <div className="num">
-                                                <div className="bg" style={{ backgroundColor: card.color }}></div>
-                                                {card.id}
-                                            </div>
-                                            <div className="lateral_phrase">{card.phrase}</div>
+                                    <div className="sublink-card__total-score">{item.totalScore}</div>
+
+                                    <div className="sublink-card__info">
+
+                                        <div className="sublink-card__avatar-container">
+                                            <img
+                                                src={item.avatarUrl}
+                                                alt={item.name}
+                                                className="sublink-card__avatar"
+                                                loading="lazy"
+                                            />
                                         </div>
+
+                                        <div className="sublink-card__meta">
+                                            <h4 className="sublink-card__name">{item.name}</h4>
+                                            <h6 className="sublink-card__title">{item.title} {item.isPodcast && '🎙️'}</h6>
+                                        </div>
+
+                                        <ul className="sublink-card__score-metrics">
+                                            {item.scores.map((score, idx) => (
+                                                <li key={idx} className="sublink-card__score__item">
+                                                    <span className="sublink-card__score__label">{score.label}</span>
+                                                    <span className="sublink-card__score__val">{score.val}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+
                                     </div>
                                 </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* Panneau de détails dynamique */}
-                    {selectedSlug && selectedCard && (
-                        <div className="fancydetail_wr active">
-                            <div className="close_fancydetail" onClick={() => setSelectedSlug(null)}></div>
-
-                            <div className="content">
-                                {SUB_LINKS_DATA[selectedSlug]?.map((link, index) => (
-                                    <a
-                                        key={index}
-                                        href={link.href}
-                                        className={`card_i ${link.isPodcast ? 'podcast' : ''}`}
-                                        style={{ backgroundColor: selectedCard.color }} // La couleur s'adapte à la carte !
-                                    >
-                                        <div className="info">
-                                            <div className="title">{link.title}</div>
-                                            <div className="icon"></div>
-                                        </div>
-                                    </a>
-                                ))}
-                            </div>
-
-                            <div className="gridbg"></div>
-                        </div>
-                    )}
+                            </li>
+                        ))}
+                    </ul>
 
                 </div>
             </div>
-        </div>
+        </section>
     );
-}
+};
