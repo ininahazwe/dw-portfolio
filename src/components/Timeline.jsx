@@ -4,7 +4,7 @@ import '../styles/Timeline.css';
 
 const Timeline = () => {
     const handleNavigateToPreviousSemester = () => {
-        alert('Navigation vers April-October 2025 (à développer)');
+        // alert('Navigation vers April-October 2025 (à développer)');
         // window.location.href = '/april-october-2025';
     };
 

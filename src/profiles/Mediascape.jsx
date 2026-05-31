@@ -111,7 +111,10 @@ const Mediascape = () => {
             </div>
 
             {/* Zone de scroll en bas pour permettre à la dernière carte de s'activer pleinement */}
-            <div className="profile-footer-spacer"></div>
+            <div className="profile-footer-spacer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://mediascape.mfwa.org/" className="cust-btn" target="_blank">Connect</a>
+            </div>
+
             <AnimatePresence>
                 {selectedImage && (
                     <>

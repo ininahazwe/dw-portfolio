@@ -14,7 +14,7 @@ import Registration from "../profiles/Registration.jsx";
 import Timeline from "./Timeline.jsx"; // ✅ IMPORT DE LA TIMELINE
 
 import trackerAvatar from '../assets/Tracker1.png';
-import mediaIndexAvatar from '../assets/mediascape.png';
+import mediaIndexAvatar from '../assets/index4.png';
 import mediascapeAvatar from '../assets/mediascape.png';
 import assetAvatar from '../assets/asset.png';
 import redListAvatar from '../assets/memorial.png';

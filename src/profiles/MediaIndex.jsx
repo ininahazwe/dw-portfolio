@@ -109,8 +109,11 @@ const MediaIndex = () => {
                 })}
             </div>
 
-            {/* Zone de scroll en bas pour permettre à la dernière carte de s'activer pleinement */}
-            <div className="profile-footer-spacer"></div>
+            {/* Zone de scroll en bas pour permettre à la dernière carte de s'activer pleinement
+            <div className="profile-footer-spacer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://assets.mfwa.org/" className="cust-btn" target="_blank">Connect</a>
+            </div>*/}
+
             <AnimatePresence>
                 {selectedImage && (
                     <>

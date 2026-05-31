@@ -466,3 +466,30 @@
 .profile-footer-spacer {
     height: 35vh; /* Donne de la profondeur en bas de page pour finir le scroll proprement */
 }
+
+.cust-btn {
+    margin-right: -24px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .4em;
+    color: #282828;
+    z-index: 0;
+    padding: 5px 24px 5px 0;
+}
+
+.cust-btn::before {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 125%;
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    z-index: -1;
+    background-color: #d4c6e6;
+    transition: all .3s ease;
+}

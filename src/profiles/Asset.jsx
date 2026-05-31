@@ -132,7 +132,9 @@ const Asset = () => {
             </div>
 
             {/* Zone de scroll en bas */}
-            <div className="profile-footer-spacer"></div>
+            <div className="profile-footer-spacer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="https://assets.mfwa.org/" className="cust-btn" target="_blank">Connect</a>
+            </div>
 
             {/* Modal Lightbox */}
             <AnimatePresence>
