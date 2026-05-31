@@ -3,22 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/Judges.css';
 
 // --- 1. IMPORTATION DE TES FUTURES PAGES DE CONTENU ---
-// Tu créeras ces fichiers juste après
-import MediascapeProfile from '../profiles/FrancescoProfile';
+import MediascapeProfile from '../profiles/Mediascape';
+import MediaIndexProfile from "../profiles/MediaIndex.jsx";
+import RedlistProfile from "../profiles/RedList.jsx";
+import TrackerProfile from '../profiles/Tracker';
+import AssetProfile from '../profiles/Asset.jsx';
+import RegistrationProfile from '../profiles/Registration.jsx';
 import ConstructionAnimationLottie from "./ConstructionAnimationLottie.jsx";
-// import SergeyProfile from './profiles/SergeyProfile';
-// Import ZhouProfile from './profiles/ZhouProfile';
-// Import MattiaProfile from './profiles/MattiaProfile';
-// Import KristijanProfile from './profiles/KristijanProfile';
-// Import MichiProfile from './profiles/MichiProfile';
+import Registration from "../profiles/Registration.jsx";
+import Timeline from "./Timeline.jsx"; // ✅ IMPORT DE LA TIMELINE
+
+import trackerAvatar from '../assets/Tracker1.png';
+import mediaIndexAvatar from '../assets/mediascape.png';
+import mediascapeAvatar from '../assets/mediascape.png';
+import assetAvatar from '../assets/asset.png';
+import redListAvatar from '../assets/memorial.png';
+//import registrationAvatar from '../assets/wameca.png';
 
 const judgesData = [
-    { id: 'francesco-carli', name: 'Activity Tracker', title: 'Creative & Art Director', avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80', totalScore: 'NEW', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
-    { id: 'michi-del-rosso', name: 'Media Index', title: 'Co-Founder & CD', avatarUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&h=150&q=80', totalScore: 'NEW', scores: [{ label: 'UI', val: '8' }, { label: 'UX', val: '8' }, { label: 'INN', val: '8' }] },
-    { id: 'mediascape', name: 'Mediascape', title: 'Creative & Art Director', avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
-    { id: 'sergey-dubovenko', name: 'It Asset Inventory', title: 'CEO & Founder', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.5' }, { label: 'UX', val: '8.5' }, { label: 'INN', val: '8.5' }] },
-    { id: 'zhou-wen-jun', name: 'Red List', title: 'Galery of West Africa’s slain journalists since 1990', avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.2' }, { label: 'UX', val: '8.3' }] },
-    { id: 'mattia-rinaudo', name: 'Event registration', title: 'Design Manager', avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&h=150&q=80', totalScore: '', scores: [{ label: 'UI', val: '8.2' }, { label: 'UX', val: '8.2' }, { label: 'INN', val: '8.2' }] },
+    { id: 'tracker', name: 'Activity Tracker', title: 'Platform cataloging organizational projects with impact measurement indicators', avatarUrl: trackerAvatar, totalScore: 'NEW', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
+    { id: 'mediaIndex', name: 'Media Index', title: 'Rating platform for Ghanaian media outlets based on audience data analysis', avatarUrl: mediaIndexAvatar, totalScore: 'NEW', scores: [{ label: 'UI', val: '8' }, { label: 'UX', val: '8' }, { label: 'INN', val: '8' }] },
+    { id: 'mediascape', name: 'Mediascape', title: 'Interactive map visualizing media freedom and digital rights across West Africa', avatarUrl: mediascapeAvatar, totalScore: '', scores: [{ label: 'UI', val: '8.7' }, { label: 'UX', val: '8.7' }, { label: 'INN', val: '9' }] },
+    { id: 'asset', name: 'It Asset Inventory', title: 'Centralized system for hardware asset management with real-time statistics', avatarUrl: assetAvatar, totalScore: '', scores: [{ label: 'UI', val: '8.5' }, { label: 'UX', val: '8.5' }, { label: 'INN', val: '8.5' }] },
+    { id: 'redList', name: 'Red List', title: 'Memorial platform honoring West African journalists killed in the line of duty', avatarUrl: redListAvatar, totalScore: '', scores: [{ label: 'UI', val: '8.2' }, { label: 'UX', val: '8.3' }] },
+    //{ id: 'registration', name: 'Event registration', title: 'Event registration and participant management with automated badge generation', avatarUrl: registrationAvatar, totalScore: '', scores: [{ label: 'UI', val: '8.2' }, { label: 'UX', val: '8.2' }, { label: 'INN', val: '8.2' }] },
 ];
 
 export const JudgesSection = () => {
@@ -27,21 +35,24 @@ export const JudgesSection = () => {
     // --- 2. DICTIONNAIRE QUI ASSOCIE L'ID À SA PAGE CORRESPONDANTE ---
     const profilePages = {
         'mediascape': <MediascapeProfile />,
-        //'sergey-dubovenko': <SergeyProfile />,
-        // Tu ajouteras les autres ici au fur et à mesure :
-        // 'zhou-wen-jun': <ZhouProfile />,
+        'mediaIndex': <MediaIndexProfile />,
+        'asset': <AssetProfile />,
+        'redList': <RedlistProfile />,
+        'tracker': <TrackerProfile />,
+        'registration': <RegistrationProfile />,
     };
 
     return (
         <section className="judges-section">
 
-            {/* VUE PAR DÉFAUT : LES 6 BLOCS INITIALS */}
+            {/* VUE PAR DÉFAUT : TIMELINE + 6 BLOCS */}
             {!activeJudge && (
                 <>
-                    <header className="judges-main-header" style={{display: "flex", justifyContent: "center"}}>
+                    <header className="judges-main-header" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: 'auto' }}>
                         <ConstructionAnimationLottie width={200} height={"auto"} />
-                        {/*<h3 className="judges-main-score">8.19</h3>*/}
-                        {/*<h5 className="judges-main-subtitle">Final Judge's Score</h5>*/}
+
+                        {/* ✅ TIMELINE REMPLACE LES ANCIENS h3 ET h5 */}
+                        <Timeline />
                     </header>
 
                     <div className="judges-grid-container">
@@ -64,12 +75,12 @@ export const JudgesSection = () => {
                                             <h6 className="judge-card-title">{judge.title}</h6>
                                         </div>
                                         <ul className="judge-card-metrics">
-                                            {judge.scores.map((score, idx) => (
+                                            {/*{judge.scores.map((score, idx) => (
                                                 <li key={idx} className="judge-card-metric-item">
                                                     <span style={{ color: '#777' }}>{score.label}</span>
                                                     <strong>{score.val}</strong>
                                                 </li>
-                                            ))}
+                                            ))}*/}
                                         </ul>
                                     </motion.div>
                                 </li>
@@ -103,14 +114,13 @@ export const JudgesSection = () => {
                 </motion.nav>
             )}
 
-            {/* ZONE PORTAIL À 90% DE HAUTEUR AVEC LA PAGE INTERNE DYNAMIQUE */}
+            {/* ZONE PORTAIL À 90% DE HAUTEUR */}
             <AnimatePresence mode="wait">
                 {activeJudge && (
                     <motion.div key={activeJudge.id} className="judge-view-portal">
 
                         <motion.div layoutId={`bgShuffle-${activeJudge.id}`} className="judge-view-expanded-bg" />
 
-                        {/* Animation de transition globale (fade + slide-up) pour le contenu de la page chargée */}
                         <motion.div
                             className="judge-view-inner-content"
                             initial={{ opacity: 0, y: 25 }}
@@ -122,7 +132,6 @@ export const JudgesSection = () => {
                                 Close
                             </button>
 
-                            {/* Rendu dynamique de ton fichier/composant de page propre */}
                             {profilePages[activeJudge.id] || (
                                 <div style={{ padding: '40px', textAlign: 'center' }}>
                                     <h2>{activeJudge.name}</h2>

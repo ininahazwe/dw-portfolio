@@ -4,9 +4,9 @@ import '../styles/Judges.css';
 const sectionData = [
     {
         id: 1,
-        sectionName: "CRITÈRE #1",
-        title: "Design & UX Enhancement",
-        description: "Comprehensive redesign and user experience improvements across all interface elements, ensuring better accessibility, intuitive navigation, and modern visual standards",
+        sectionName: "FEATURE #1",
+        title: "Multi-Event Adaptation",
+        description: "Extended platform compatibility to support diverse event types and formats beyond WAMECA, enabling flexible registration workflows for different event needs",
         duration: "Coef. X4",
         category: "Évaluation Technique",
         imgUrl: "https://via.placeholder.com/400",
@@ -14,9 +14,9 @@ const sectionData = [
     },
     {
         id: 2,
-        sectionName: "CRITÈRE #2",
-        title: "Production Deployment",
-        description: "Full installation and configuration of the platform and its database on MFWA's organizational servers, ensuring data security and operational continuity",
+        sectionName: "FEATURE #2",
+        title: "Flexible Registration Workflows",
+        description: "Customizable registration forms and workflows tailored to specific event requirements, supporting multiple registration tiers and ticket types",
         duration: "Coef. X3",
         category: "Performance",
         imgUrl: "https://via.placeholder.com/400",
@@ -24,35 +24,25 @@ const sectionData = [
     },
     {
         id: 3,
-        sectionName: "CRITÈRE #3",
-        title: "Performance Optimization",
-        description: "Advanced caching strategies and database optimization to ensure fast loading times and seamless interaction across 16 West African countries' data.",
+        sectionName: "FEATURE #3",
+        title: "Scalable Badge System",
+        description: "Enhanced badge printing integration supporting batch processing and various badge formats for large-scale events with thousands of participants.",
         duration: "Historique",
         category: "Parcours Pro",
         imgUrl: "https://via.placeholder.com/400",
         bgColor: "#eaf1ea"
-    },
-    {
-        id: 4,
-        sectionName: "CONCLUSION",
-        title: "Le Verdict Global",
-        description: "Une approche intransigeante mais juste, visant à propulser les talents vers leur maximum potentiel.",
-        duration: "Final",
-        category: "Synthèse",
-        imgUrl: "https://via.placeholder.com/400",
-        bgColor: "#ebdff2"
     }
 ];
 
-const FrancescoProfile = () => {
+const Registration = () => {
     const totalItems = sectionData.length;
 
     return (
         <div className="profile-internal-content">
 
             <div className="profile-intro">
-                <h2>MEDIASCAPE</h2>
-                <p>Interactive map visualizing media freedom, press environment, and digital rights across West Africa</p>
+                <h2>Event Checkin</h2>
+                <p>Event registration and participant management system designed for seamless onboarding, real-time check-in, and automated badge generation.</p>
             </div>
 
             <div className="stack_wrapper">
@@ -110,4 +100,4 @@ const FrancescoProfile = () => {
     );
 };
 
-export default FrancescoProfile;
+export default Registration;

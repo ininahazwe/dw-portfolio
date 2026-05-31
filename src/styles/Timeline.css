@@ -1,0 +1,277 @@
+/* Body */
+body {
+    background-color: #FFFFFF;
+}
+
+/* Section principale timeline */
+.main-timeline-section {
+    position: relative;
+    width: 76%;
+    margin-top: 15px;
+    height: 230px;
+}
+
+/* Cercles de début et fin */
+.main-timeline-section .timeline-start,
+.main-timeline-section .timeline-end {
+    position: absolute;
+    background: #d4c6e6;
+    /* border-radius (qui créait le rond) */
+    top: 20%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    z-index: 3;
+}
+
+.main-timeline-section .timeline-start{
+    border-radius: 100px;
+}
+
+.main-timeline-section .timeline-end {
+    right: 0;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+/* Ligne centrale horizontale */
+.main-timeline-section .conference-center-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 20%;
+    transform: translateY(-50%);
+    background: #8B7355;
+    z-index: 1;
+}
+
+/* Conteneur des articles */
+.conference-timeline-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Article timeline */
+.timeline-article {
+    width: 30%;
+    position: absolute;
+    min-height: 210px;
+}
+
+/* Position GAUCHE - Marqueur 1 */
+.timeline-article-left {
+    left: 0;
+}
+
+/* Position CENTRE - Marqueur 2 */
+.timeline-article-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Position DROITE - Marqueur 3 */
+.timeline-article-right {
+    right: 0;
+}
+
+/* Date du marqueur - TOUJOURS EN HAUT */
+.timeline-article .content-date {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Cercle du marqueur */
+.timeline-article .meta-date {
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: #fff;
+    border: 2px solid #8B7355;
+    z-index: 4;
+    transition: all 300ms ease;
+}
+
+/* Pour le marqueur de CENTRE */
+.timeline-article-center .meta-date {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Pour le marqueur de DROITE */
+.timeline-article-right .meta-date {
+    left: auto;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+/* Boîte de contenu - TOUJOURS EN BAS */
+.timeline-article .content-box {
+    /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ddd;*/
+    border-radius: 4px;
+    background-color: #fff;
+    width: 220px;
+    position: absolute;
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    transition: all 300ms ease;
+}
+
+/* Pour le marqueur de CENTRE (boîte plus large) */
+.timeline-article-center .content-box {
+    width: 700px;
+}
+
+.timeline-article .content-box p {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    font-weight: 400;
+    white-space: pre-line;
+}
+
+/* Triangle pointeur - vers le bas (content-box en bas) */
+.timeline-article-top .content-box:before {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -17px;
+    border: 8px solid transparent;
+    border-bottom-color: #8B7355;
+    opacity: 0.2;
+    transition: opacity 300ms ease;
+}
+
+.timeline-article-top:hover .content-box:before {
+    opacity: 0.4;
+}
+
+/* Triangle pointeur - vers le bas (content-box en bas) */
+.timeline-article-bottom .content-box:before {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -16px;
+    border: 8px solid transparent;
+    border-bottom-color: #8B7355;
+    opacity: 0.2;
+    transition: opacity 300ms ease;
+}
+
+.timeline-article-bottom:hover .content-box:before {
+    opacity: 0.4;
+}
+
+/* Style pour le 3ème marqueur vide (future) */
+.timeline-article-empty .content-box {
+    display: none;
+}
+
+.timeline-article-empty .content-date {
+    display: none;
+}
+
+.timeline-article-empty .meta-date {
+    background: #ddd;
+    border-color: #999;
+    opacity: 0.5;
+}
+
+/* Style actif (marqueur Oct 25 - Apr 26) */
+.timeline-article.active .content-box {
+    /*border-color: #c9c0e4;
+    box-shadow: 0 4px 16px rgba(201, 192, 228, 0.2);
+    background-color: #fafbfc;*/
+}
+
+.timeline-article.active .meta-date {
+    border-color: #c9c0e4;
+    background: #c9c0e4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-timeline-section {
+        height: 500px;
+    }
+
+    .timeline-article {
+        width: 100%;
+        left: 0 !important;
+        right: 0 !important;
+    }
+
+    .timeline-article .content-date {
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .timeline-article .meta-date {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-article .content-box {
+        width: 250px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+    }
+
+    .timeline-article-top .content-box {
+        top: 35%;
+    }
+
+    .timeline-article-bottom .content-box {
+        top: 45%;
+    }
+
+    .timeline-article-top .content-box:before {
+        left: 50%;
+    }
+
+    .timeline-article-bottom .content-box:before {
+        left: 50%;
+    }
+}
+
+@media (max-width: 640px) {
+    .main-timeline-section {
+        height: 600px;
+    }
+
+    .timeline-article .content-date {
+        font-size: 13px;
+    }
+
+    .timeline-article .content-box {
+        width: 200px;
+        padding: 12px;
+    }
+
+    .timeline-article .content-box p {
+        font-size: 0.85rem;
+        white-space: pre-line;
+    }
+}
