@@ -10,7 +10,7 @@ import {X} from "lucide-react";
 const sectionData = [
     {
         id: 1,
-        sectionName: "FEATURE #1",
+        sectionName: "NEW FEATURE #1",
         title: "Interactive Country Filter Map",
         description: "Geographic visualization enabling users to filter and explore journalist records by country, providing spatial context and comparative analysis of press freedom challenges across West Africa",
         duration: "Coef. X4",
@@ -20,7 +20,7 @@ const sectionData = [
     },
     {
         id: 2,
-        sectionName: "FEATURE #2",
+        sectionName: "NEW FEATURE #2",
         title: "Journalist Profile Pages",
         description: "Dedicated biographical pages for each fallen journalist, consolidating comprehensive information including personal background, career highlights, circumstances of disappearance, and lasting legacy",
         duration: "Coef. X3",
@@ -30,7 +30,7 @@ const sectionData = [
     },
     {
         id: 3,
-        sectionName: "FEATURE #3",
+        sectionName: "NEW FEATURE #3",
         title: "Simplified Data Administration Panel ",
         description: "Simplified management interface for organizing and categorizing raw project data with streamlined workflows",
         duration: "Coef. X3",

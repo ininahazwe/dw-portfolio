@@ -4,7 +4,7 @@ import '../styles/Judges.css';
 const sectionData = [
     {
         id: 1,
-        sectionName: "FEATURE #1",
+        sectionName: "NEW FEATURE #1",
         title: "Multi-Event Adaptation",
         description: "Extended platform compatibility to support diverse event types and formats beyond WAMECA, enabling flexible registration workflows for different event needs",
         duration: "Coef. X4",
@@ -14,7 +14,7 @@ const sectionData = [
     },
     {
         id: 2,
-        sectionName: "FEATURE #2",
+        sectionName: "NEW FEATURE #2",
         title: "Flexible Registration Workflows",
         description: "Customizable registration forms and workflows tailored to specific event requirements, supporting multiple registration tiers and ticket types",
         duration: "Coef. X3",
@@ -24,7 +24,7 @@ const sectionData = [
     },
     {
         id: 3,
-        sectionName: "FEATURE #3",
+        sectionName: "NEW FEATURE #3",
         title: "Scalable Badge System",
         description: "Enhanced badge printing integration supporting batch processing and various badge formats for large-scale events with thousands of participants.",
         duration: "Historique",

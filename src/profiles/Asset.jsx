@@ -11,7 +11,7 @@ import asset4 from '../assets/asset4.png';
 const sectionData = [
     {
         id: 1,
-        sectionName: "FEATURE #1",
+        sectionName: "NEW FEATURE #1",
         title: "Digital Auction System\n",
         description: "New module enabling office equipment digital auction with bidding mechanism, automated notifications, and transaction tracking for sustainable asset lifecycle management",
         duration: "Coef. X4",
@@ -21,7 +21,7 @@ const sectionData = [
     },
     {
         id: 2,
-        sectionName: "FEATURE #2",
+        sectionName: "NEW FEATURE #2",
         title: "Hardware Incident Management",
         description: "Complete incident tracking system for equipment issues, repair workflows, resolution tracking, and historical incident analytics for preventive maintenance",
         duration: "Coef. X3",
@@ -31,7 +31,7 @@ const sectionData = [
     },
     {
         id: 3,
-        sectionName: "FEATURE #3",
+        sectionName: "NEW FEATURE #3",
         title: "Equipment Procurement Module\n",
         description: "Streamlined purchasing workflow with purchase order generation, vendor management, budget tracking, and automated approval chains for transparent procurement processes",
         duration: "Historique",

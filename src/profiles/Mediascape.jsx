@@ -4,14 +4,14 @@ import '../styles/Judges.css';
 import mediascape1 from '../assets/mediascape.png';
 import mediascape2 from '../assets/mediascape4.png';
 import mediascape3 from '../assets/mediascape2.png';
-import mediascape4 from '../assets/mediascape3.png';
+
 import {AnimatePresence, motion as Motion} from "framer-motion";
 import {X} from "lucide-react";
 
 const sectionData = [
     {
         id: 1,
-        sectionName: "FEATURE #1",
+        sectionName: "NEW FEATURE #1",
         title: "Design & UX Enhancement",
         description: "Comprehensive redesign and user experience improvements across all interface elements, ensuring better accessibility, intuitive navigation, and modern visual standards",
         duration: "Coef. X4",
@@ -21,7 +21,7 @@ const sectionData = [
     },
     {
         id: 2,
-        sectionName: "FEATURE #2",
+        sectionName: "NEW FEATURE #2",
         title: "Production Deployment",
         description: "Full installation and configuration of the platform and its database on MFWA's organizational servers, ensuring data security and operational continuity",
         duration: "Coef. X3",
@@ -31,7 +31,7 @@ const sectionData = [
     },
     {
         id: 3,
-        sectionName: "FEATURE #3",
+        sectionName: "NEW FEATURE #3",
         title: "Performance Optimization",
         description: "Advanced caching strategies and database optimization to ensure fast loading times and seamless interaction across 16 West African countries' data.",
         duration: "Historique",
