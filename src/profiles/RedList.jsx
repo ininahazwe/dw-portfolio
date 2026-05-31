@@ -139,10 +139,10 @@ const RedList = () => {
                             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                             style={{
                                 position: 'fixed',
-                                top: '50%',
+                                top: '25%',
                                 left: '50%',
                                 transform: 'translate(-50%, -50%)',
-                                x: '-25%',   // ← ici, pas dans transform
+                                x: '-50%',   // ← ici, pas dans transform
                                 y: '-50%',   // ← ici, pas dans transform
                                 zIndex: 1001,
                                 background: '#ffffff',
