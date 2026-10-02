@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { timelinePeriods, colorPalettes } from '../data/timelinePeriods';
+import { timelinePeriods, colorPalettes } from '../data/legacy/timelinePeriods';
 import '../styles/TimelinePortfolio.css';
 
 const TimelinePortfolio = () => {

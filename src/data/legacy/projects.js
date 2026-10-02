@@ -1,38 +1,38 @@
 import { Code, Palette, Languages, BarChart3 } from 'lucide-react';
-import ci1 from '../assets/ci1.png';
-import ci2 from '../assets/ci2.png';
-import ci3 from '../assets/ci3.png';
-import dipl1 from '../assets/dipl1.png';
-import dw from '../assets/dw.png';
-import forum1 from '../assets/forum1.png';
-import forum2 from '../assets/forum2.png';
-import fourth1 from '../assets/fourth1.png';
-import fourth2 from '../assets/fourth2.png';
-import fourth3 from '../assets/fourth3.png';
-import fourth4 from '../assets/fourth4.png';
-import giz from '../assets/giz.png';
-import ngij1 from '../assets/ngij1.png';
-import ngij2 from '../assets/ngij2.png';
-import ngij3 from '../assets/ngij3.png';
-import proj1 from '../assets/proj1.png';
-import proj2 from '../assets/proj2.png';
-import proj3 from '../assets/proj3.png';
-import proj4 from '../assets/proj4.png';
-import table from '../assets/table.png';
-import togo1 from '../assets/togo1.png';
-import togo2 from '../assets/togo2.png';
-import trombi from '../assets/trombi.png';
-import wameca from '../assets/wameca.png';
-import webinar from '../assets/webinar.png';
-import map1 from '../assets/map1.png';
-import checkin from '../assets/checkin.png';
-import agenda from '../assets/agenda.png';
-import directory from '../assets/directory.png';
-import inventory from '../assets/inventory.png';
-import looker1 from '../assets/lookerStudio1.png';
-import sheet1 from '../assets/sheet1.png';
-import looker3 from '../assets/lookerStudio3.png';
-import drive1 from '../assets/drive1.png';
+import ci1 from '../../assets/ci1.png';
+import ci2 from '../../assets/ci2.png';
+import ci3 from '../../assets/ci3.png';
+import dipl1 from '../../assets/dipl1.png';
+import dw from '../../assets/dw.png';
+import forum1 from '../../assets/forum1.png';
+import forum2 from '../../assets/forum2.png';
+import fourth1 from '../../assets/fourth1.png';
+import fourth2 from '../../assets/fourth2.png';
+import fourth3 from '../../assets/fourth3.png';
+import fourth4 from '../../assets/fourth4.png';
+import giz from '../../assets/giz.png';
+import ngij1 from '../../assets/ngij1.png';
+import ngij2 from '../../assets/ngij2.png';
+import ngij3 from '../../assets/ngij3.png';
+import proj1 from '../../assets/proj1.png';
+import proj2 from '../../assets/proj2.png';
+import proj3 from '../../assets/proj3.png';
+import proj4 from '../../assets/proj4.png';
+import table from '../../assets/table.png';
+import togo1 from '../../assets/togo1.png';
+import togo2 from '../../assets/togo2.png';
+import trombi from '../../assets/trombi.png';
+import wameca from '../../assets/wameca.png';
+import webinar from '../../assets/webinar.png';
+import map1 from '../../assets/map1.png';
+import checkin from '../../assets/checkin.png';
+import agenda from '../../assets/agenda.png';
+import directory from '../../assets/directory.png';
+import inventory from '../../assets/inventory.png';
+import looker1 from '../../assets/lookerStudio1.png';
+import sheet1 from '../../assets/sheet1.png';
+import looker3 from '../../assets/lookerStudio3.png';
+import drive1 from '../../assets/drive1.png';
 
 export const categories = [
   {
@@ -42,7 +42,7 @@ export const categories = [
     color: '#2C2C2C',
     gallery: [
       {
-        id: 'visual-1',
+        id: 'dev-img-01',
         title: 'Interactive data visualization map',
         description: 'Dynamic mapping platform for West African media data visualization, with backend administration system',
         thumbnail: map1,
@@ -51,7 +51,7 @@ export const categories = [
         category: 'Application'
       },
       {
-        id: 'visual-2',
+        id: 'dev-img-02',
         title: 'Assets management',
         description: 'Management of furniture inventory and IT assets - This application provides comprehensive tracking and management of the organization"s furniture and IT equipment throughout their entire lifecycle. The system generates a unique QR code for each asset unit, which can be affixed directly to the item. By scanning this QR code, users can instantly access the complete history of the asset, including purchase information (acquisition date, supplier, cost), assignment details (current user, department, location), condition status, maintenance and repair history, and total cost of ownership. The system provides real-time, accurate data on the entire furniture and IT asset inventory, enabling instant visibility into asset availability and utilization, proactive maintenance planning, budget tracking and cost optimization, streamlined asset allocation and transfers, and automated reporting and compliance tracking.',
         thumbnail: inventory,
@@ -60,7 +60,7 @@ export const categories = [
         link: 'https://inventory-app-two-sigma.vercel.app/'
       },
       {
-        id: 'visual-3',
+        id: 'dev-img-03',
         title: 'Articles catalog',
         description: 'Comprehensive catalog of MFWA website articles with advanced search functionality',
         thumbnail: directory,
@@ -69,7 +69,7 @@ export const categories = [
         category: 'Application',
       },
       {
-        id: 'visual-4',
+        id: 'dev-img-04',
         title: 'Registration platform',
         description: 'Participant registration platform for events with real-time data visualization',
         thumbnail: checkin,
@@ -78,7 +78,7 @@ export const categories = [
         category: 'Application',
       },
       {
-        id: 'visual-5',
+        id: 'dev-img-05',
         title: 'Live event agenda',
         description: 'Real-time schedule platform with QR code for events',
         thumbnail: agenda,
@@ -102,7 +102,7 @@ export const categories = [
         metrics: 'Automated interactive dashboard',
         gallery: [
           {
-            id: 'visual-1',
+            id: 'analytics-img-01',
             title: 'Looker Studio Dashboard',
             description: 'Linking data sheets to Looker Studio to visualize them interactively - This application seamlessly connects data sheets to Looker Studio, enabling dynamic and interactive visualization of key metrics and performance indicators. The system allows users to perform complex analysis of results through comprehensive data exploration, filtering, and comparison capabilities. Users can apply multiple filters to drill down into specific datasets, identify trends, and generate customized views tailored to their analytical needs. The application also enables the download of filtered data in various formats, making it easy to create detailed reports, share insights with stakeholders, and conduct further offline analysis. This integration transforms raw data into actionable intelligence through intuitive dashboards and real-time reporting.',
             thumbnail: looker1,
@@ -111,7 +111,7 @@ export const categories = [
             category: 'Metrics'
           },
           {
-            id: 'visual-1',
+            id: 'analytics-img-02',
             title: 'Looker Studio Dashboard',
             description: 'Linking data sheets to Looker Studio to visualize them interactively - This application seamlessly connects data sheets to Looker Studio, enabling dynamic and interactive visualization of key metrics and performance indicators. The system allows users to perform complex analysis of results through comprehensive data exploration, filtering, and comparison capabilities. Users can apply multiple filters to drill down into specific datasets, identify trends, and generate customized views tailored to their analytical needs. The application also enables the download of filtered data in various formats, making it easy to create detailed reports, share insights with stakeholders, and conduct further offline analysis. This integration transforms raw data into actionable intelligence through intuitive dashboards and real-time reporting.',
             thumbnail: looker3,
@@ -129,7 +129,7 @@ export const categories = [
         tech: ['Excel', 'Analytics', 'Visualization'],
         gallery: [
           {
-            id: 'visual-1',
+            id: 'analytics-img-03',
             title: 'Social Media Reports',
             description: 'Detailed weekly and monthly performance reports on all social networks (Twitter, Facebook, LinkedIn).',
             thumbnail: sheet1,
@@ -146,7 +146,7 @@ export const categories = [
         tech: ['Google Workspace', 'Google Drive', 'Google Calendar', 'Organization', 'Permissions'],
         gallery: [
           {
-            id: 'visual-1',
+            id: 'analytics-img-04',
             title: 'Google Drive & Calendars Setup',
             description: 'Complete structuring and organization of shared Google Drive with permissions management. Setup and synchronization of shared calendars for team collaboration and scheduling.',
             thumbnail: drive1,
@@ -185,7 +185,7 @@ export const categories = [
     color: '#8B7355',
     gallery: [
       {
-        id: 'visual-1',
+        id: 'visual-img-01',
         title: 'NSS Scandals Campaigns',
         description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth2,
@@ -193,7 +193,7 @@ export const categories = [
         category: 'Campaign'
       },
       {
-        id: 'visual-2',
+        id: 'visual-img-02',
         title: 'NSS Scandals Campaigns',
         description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth1,
@@ -201,7 +201,7 @@ export const categories = [
         category: 'Flyers'
       },
       {
-        id: 'visual-3',
+        id: 'visual-img-03',
         title: 'NSS Scandals Campaigns',
         description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth3,
@@ -209,7 +209,7 @@ export const categories = [
         category: 'Campaign'
       },
       {
-        id: 'visual-4',
+        id: 'visual-img-04',
         title: 'NSS Scandals Campaigns',
         description: 'Awareness campaign on NSS scandals',
         thumbnail: fourth4,
@@ -217,7 +217,7 @@ export const categories = [
         category: 'Institutional'
       },
       {
-        id: 'visual-5',
+        id: 'visual-img-05',
         title: 'Ivory Coast Elections',
         description: 'Current affairs visual series',
         thumbnail: ci1,
@@ -225,7 +225,7 @@ export const categories = [
         category: 'Current Affairs'
       },
       {
-        id: 'visual-6',
+        id: 'visual-img-06',
         title: 'Ivory Coast Elections',
         description: 'Custom thumbnail designs for media',
         thumbnail: ci2,
@@ -233,7 +233,7 @@ export const categories = [
         category: 'Media'
       },
       {
-        id: 'visual-7',
+        id: 'visual-img-07',
         title: 'Ivory Coast Elections',
         description: 'Email marketing visual designs',
         thumbnail: ci3,
@@ -241,7 +241,7 @@ export const categories = [
         category: 'Newsletter'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-08',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: forum1,
@@ -249,7 +249,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-09',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: forum2,
@@ -257,7 +257,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-10',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: dw,
@@ -265,7 +265,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-11',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: giz,
@@ -273,7 +273,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-12',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: dipl1,
@@ -281,7 +281,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-13',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: ngij1,
@@ -289,7 +289,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-14',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: ngij2,
@@ -297,7 +297,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-15',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: ngij3,
@@ -305,7 +305,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-16',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: proj1,
@@ -313,7 +313,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-17',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: proj2,
@@ -321,7 +321,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-18',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: proj3,
@@ -329,7 +329,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-19',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: proj4,
@@ -337,7 +337,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-20',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: trombi,
@@ -345,7 +345,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-21',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: table,
@@ -353,7 +353,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-22',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: togo1,
@@ -361,7 +361,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-23',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: togo2,
@@ -369,7 +369,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-24',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: wameca,
@@ -377,7 +377,7 @@ export const categories = [
         category: 'Social Media'
       },
       {
-        id: 'visual-8',
+        id: 'visual-img-25',
         title: 'Social Media Series',
         description: 'Instagram and Facebook post designs',
         thumbnail: webinar,

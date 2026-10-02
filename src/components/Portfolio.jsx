@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
-import { categories } from '../data/projects';
+import { categories } from '../data/legacy/projects';
 import { ArrowUp } from 'lucide-react';
 import Timeline from './Timeline';
 import ImageGallery from './ImageGallery';

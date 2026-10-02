@@ -4,6 +4,7 @@ export const timelinePeriods = [
         title: 'Avril - Octobre 2025',
         subtitle: 'Fondations et Diversification',
         description: 'Premier semestre couvrant l\'intégration initiale à MFWA. Établissement des bases en développement digital, communication visuelle, traduction et analytics. Mise en place des outils numériques essentiels et des fondations pour les opérations.',
+        summary: 'From April to October, my work at MFWA took me across diverse disciplines, from crafting digital solutions and designing compelling visual communication, to delivering precision in translation and content writing, all while managing great projects through analytics and strategic oversight. Each endeavor reflects a commitment to transforming ideas into impactful outcomes that enhance work life through digitalization.',
         startDate: 'Avril 2025',
         endDate: 'Octobre 2025',
         highlights: [
@@ -95,6 +96,7 @@ export const timelinePeriods = [
         title: 'Octobre 2025 - Avril 2026',
         subtitle: 'Approfondissement et Impact',
         description: 'Deuxième semestre marqué par l\'optimisation des systèmes existants et l\'expansion des capacités. Renforcement des métriques, amélioration de l\'efficacité organisationnelle et montée en expertise technique.',
+        summary: 'From October to April, my mission at MFWA centered on two pillars: advancing the applications built in the first semester, and developing new platforms addressing specific digitalization needs. This period reflects a strategic focus on evolving existing solutions while creating innovative systems that transform how teams work, embedding digital transformation into the core of organizational processes.',
         startDate: 'Octobre 2025',
         endDate: 'Avril 2026',
         highlights: [
