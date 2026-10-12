@@ -51,6 +51,7 @@ import togo1 from '../assets/togo1.png';
 import togo2 from '../assets/togo2.png';
 import wameca from '../assets/wameca.png';
 import webinar from '../assets/webinar.png';
+import memorial from '../assets/memorial.png';
 
 export const periods = [
     {
@@ -76,6 +77,17 @@ export const periods = [
         startDate: 'Octobre 2025',
         endDate: 'Avril 2026',
         highlights: ['Optimisation des dashboards', 'Refactorisation des plateformes', 'Intégrations avancées'],
+    },
+    {
+        // Contenu à venir : ajouter des phases avec periodId: 2 dans "projects".
+        id: 2,
+        title: 'Octobre 2026 - Avril 2027',
+        subtitle: 'À venir',
+        description: '',
+        summary: 'Content for this period is coming soon.',
+        startDate: 'Octobre 2026',
+        endDate: 'Avril 2027',
+        highlights: [],
     },
 ];
 
@@ -189,6 +201,9 @@ export const projects = [
         id: 'memorial-website',
         category: 'dev',
         title: 'Memorial Website',
+        images: [
+            { src: memorial },
+        ],
         phases: [
             {
                 periodId: 1,

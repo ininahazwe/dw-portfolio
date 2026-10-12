@@ -1,7 +1,7 @@
-import Home from './pages/Home';
+import Workspace from './pages/Workspace';
 
 function App() {
-    return <Home />
+    return <Workspace />
 }
 
 export default App
