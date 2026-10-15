@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
@@ -9,6 +9,9 @@ import Portfolio from "./components/Portfolio.jsx";
 import HomeV1 from "./pages/HomeV1.jsx";
 import Home from "./pages/Home.jsx";
 
+// Page d'administration chargée à la demande : elle n'alourdit pas le site public
+const Admin = lazy(() => import('./pages/Admin.jsx'))
+
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <BrowserRouter>
@@ -17,6 +20,7 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/apr-oct25" element={<Portfolio />} />
                 <Route path="/v1" element={<HomeV1 />} />
                 <Route path="/v2" element={<Home />} />
+                <Route path="/admin" element={<Suspense fallback={null}><Admin /></Suspense>} />
             </Routes>
         </BrowserRouter>
     </StrictMode>,
