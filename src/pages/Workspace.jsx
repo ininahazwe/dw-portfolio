@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
+import { Link, useMatch, useNavigate } from 'react-router-dom';
 import {
     ArrowLeft, Bell, CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, Sparkles, X,
 } from 'lucide-react';
@@ -23,6 +23,15 @@ function Kpi({ value, label, delta }) {
                 <span className={`ws-delta ${delta > 0 ? 'is-up' : 'is-down'}`}>{delta > 0 ? '↑' : '↓'}{Math.abs(delta)}</span>
             )}
         </div>
+    );
+}
+
+// Cellule de grille : glisse en douceur quand la grille se réorganise (panneau ouvert / fermé)
+function Cell({ children }) {
+    return (
+        <Motion.div layout="position" className="ws-cell" transition={{ type: 'spring', stiffness: 420, damping: 40 }}>
+            {children}
+        </Motion.div>
     );
 }
 
@@ -58,13 +67,17 @@ export default function Workspace() {
 
 function WorkspaceView() {
     const model = useModel();
-    const { CATEGORIES, CURRENT_PERIOD, LATEST_WITH_CONTENT, periodById, projectsOfPeriod } = model;
+    const { CATEGORIES, CURRENT_PERIOD, LATEST_WITH_CONTENT, PROJECTS, periodById, projectsOfPeriod } = model;
+    const navigate = useNavigate();
+    const match = useMatch('/project/:id');
+    const contentRef = useRef(null);
+    const didMount = useRef(false);
     const [periodId, setPeriodId] = useState(null); // filtre de la frise (null = toutes les périodes)
     const [category, setCategory] = useState(ALL);
     const [query, setQuery] = useState('');
     const [searchOpen, setSearchOpen] = useState(false);
     const [sortAZ, setSortAZ] = useState(false);
-    const [view, setView] = useState(null); // { type: 'project', project } | { type: 'period' } | null (auto)
+    const [periodOpen, setPeriodOpen] = useState(false); // résumé de période ouvert dans le panneau
     const [lightbox, setLightbox] = useState(null);
 
     const period = periodId == null ? null : periodById[periodId];
@@ -82,19 +95,36 @@ function WorkspaceView() {
 
     const stats = periodStats(periodId, model);
 
-    // Panneau : projet choisi, sinon la 1re vitrine, sinon le résumé de période
-    // Panneau : n'apparaît qu'au clic (projet ou résumé de période), se ferme avec X ou Échap
-    const selectedId = view?.type === 'project' ? view.project.id : null;
-    const closePanel = () => setView(null);
+    // Le projet ouvert vient de l'URL (/project/<id>) : lien partageable, bouton retour du navigateur géré.
+    const urlProject = match ? PROJECTS.find(p => p.id === match.params.id) : null;
+    const view = urlProject ? { type: 'project', project: urlProject } : periodOpen ? { type: 'period' } : null;
+    const selectedId = urlProject?.id ?? null;
+
+    // Lien vers un projet inconnu (supprimé, faute de frappe) : retour à l'accueil
+    useEffect(() => { if (match && !urlProject) navigate('/', { replace: true }); }, [match, urlProject, navigate]);
+
+    const closePanel = () => { setPeriodOpen(false); if (match) navigate('/'); };
+    const showPeriod = () => { setPeriodOpen(true); if (match) navigate('/'); };
     useEffect(() => {
-        if (!view) return;
-        const onKey = (e) => e.key === 'Escape' && !lightbox && setView(null);
+        if (!view) return undefined;
+        const onKey = (e) => { if (e.key === 'Escape' && !lightbox) closePanel(); };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-    }, [view, lightbox]);
+    });
+
+    // À l'ouverture, amener le panneau en haut de l'écran (seulement vers le bas, jamais au premier affichage)
+    const isOpen = !!view;
+    useEffect(() => {
+        if (!didMount.current) { didMount.current = true; return; }
+        if (!isOpen) return;
+        const panel = contentRef.current?.querySelector('.ws-panel');
+        if (!panel) return;
+        const top = panel.getBoundingClientRect().top + window.scrollY - 22;
+        if (window.scrollY < top - 4) window.scrollTo({ top, behavior: 'smooth' });
+    }, [isOpen]);
 
     const choosePeriod = (id) => { setPeriodId(id); setCategory(ALL); };
-    const select = (project) => setView({ type: 'project', project });
+    const select = (project) => { setPeriodOpen(false); navigate(`/project/${project.id}`); };
     const openVisuals = (project, index = 0) => project.images.length && setLightbox({
         images: project.images.map(im => ({
             src: im.src, full: im.full ?? im.src, title: project.title,
@@ -130,14 +160,14 @@ function WorkspaceView() {
                         <button className="ws-side-btn is-on" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} title="Overview"><LayoutGrid size={17} strokeWidth={1.6} /></button>
                         <button className="ws-side-btn" onClick={() => scrollTo('highlights')} title="Highlights"><Sparkles size={17} strokeWidth={1.6} /></button>
                         <button className="ws-side-btn" onClick={() => scrollTo('projects')} title="All projects"><Layers size={17} strokeWidth={1.6} /></button>
-                        <button className="ws-side-btn" onClick={() => setView({ type: 'period' })} title="Period summary"><CalendarRange size={17} strokeWidth={1.6} /></button>
+                        <button className="ws-side-btn" onClick={showPeriod} title="Period summary"><CalendarRange size={17} strokeWidth={1.6} /></button>
                     </div>
                 </nav>
 
                 {/* ===== En-tête : titre + indicateurs ===== */}
                 <section className="ws-head">
                     <h1 className="ws-title">P<span className="ws-o">O</span>RTFOLIO</h1>
-                    <button className="ws-pill-btn" onClick={() => setView({ type: 'period' })}>
+                    <button className="ws-pill-btn" onClick={showPeriod}>
                         <span className="ws-pill-plus"><FileText size={14} strokeWidth={1.8} /></span>
                         Period summary
                     </button>
@@ -149,6 +179,7 @@ function WorkspaceView() {
                 </section>
 
                 {/* ===== Contenu ===== */}
+                <div ref={contentRef} className={`ws-content ${view ? 'is-open' : ''}`}>
                 <main className="ws-main">
                     <section id="highlights" className="ws-section">
                         <div className="ws-section-head">
@@ -159,9 +190,11 @@ function WorkspaceView() {
                         {featured.length ? (
                             <div className="ws-grid">
                                 {featured.map(p => (
-                                    <HighlightCard key={p.id} project={p} periodId={CURRENT_PERIOD.id}
-                                                   selected={selectedId === p.id} isNewest={p.id === newest}
-                                                   onSelect={() => select(p)} />
+                                    <Cell key={p.id}>
+                                        <HighlightCard project={p} periodId={CURRENT_PERIOD.id}
+                                                       selected={selectedId === p.id} isNewest={p.id === newest}
+                                                       onSelect={() => select(p)} />
+                                    </Cell>
                                 ))}
                             </div>
                         ) : (
@@ -209,9 +242,11 @@ function WorkspaceView() {
                         {list.length ? (
                             <div className="ws-grid">
                                 {list.map(p => (
-                                    <ProjectCard key={p.id} project={p} periodId={periodId}
-                                                 selected={selectedId === p.id}
-                                                 onSelect={() => select(p)} onOpenVisuals={openVisuals} />
+                                    <Cell key={p.id}>
+                                        <ProjectCard project={p} periodId={periodId}
+                                                     selected={selectedId === p.id}
+                                                     onSelect={() => select(p)} onOpenVisuals={openVisuals} />
+                                    </Cell>
                                 ))}
                             </div>
                         ) : (
@@ -220,14 +255,13 @@ function WorkspaceView() {
                     </section>
                 </main>
 
-                <AnimatePresence>
-                    {view && (
-                        <SummaryPanel key="panel" view={view} periodId={periodId}
-                                      period={period ?? LATEST_WITH_CONTENT}
-                                      periodCount={projectsOfPeriod((period ?? LATEST_WITH_CONTENT).id).length}
-                                      onOpen={openVisuals} onClose={closePanel} />
-                    )}
-                </AnimatePresence>
+                {view && (
+                    <SummaryPanel view={view} periodId={periodId}
+                                  period={period ?? LATEST_WITH_CONTENT}
+                                  periodCount={projectsOfPeriod((period ?? LATEST_WITH_CONTENT).id).length}
+                                  onOpen={openVisuals} onClose={closePanel} />
+                )}
+                </div>
             </div>
 
             <AnimatePresence>

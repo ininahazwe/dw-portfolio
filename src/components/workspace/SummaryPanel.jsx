@@ -150,9 +150,12 @@ export default function SummaryPanel({ view, periodId, period, periodCount, onOp
     const project = view?.type === 'project' ? view.project : null;
     const key = project ? project.id : `period-${period?.id}`;
     return (
-        <Motion.aside className="ws-panel" aria-label="Summary"
-                      initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 40 }}
-                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}>
+        <Motion.aside className="ws-panel" aria-label={project ? project.title : 'Period summary'}
+                      initial={{ opacity: 0, x: 28 }} animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}>
+            <button className="ws-panel-close" onClick={onClose} aria-label="Close" title="Close (Esc)">
+                <X size={20} strokeWidth={1.7} />
+            </button>
             <AnimatePresence mode="wait">
                 <Motion.div key={key} className="ws-panel-inner"
                             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
@@ -163,9 +166,6 @@ export default function SummaryPanel({ view, periodId, period, periodCount, onOp
                         <div className="ws-summary-head">
                             <span className="ws-circle ws-circle--ghost"><Sparkles size={16} strokeWidth={1.5} /></span>
                             <h3>Summary</h3>
-                            <button className="ws-circle ws-circle--ghost" onClick={onClose} aria-label="Close panel" title="Close (Esc)">
-                                <X size={16} strokeWidth={1.5} />
-                            </button>
                         </div>
                         <div className="ws-summary-body">
                             {project
