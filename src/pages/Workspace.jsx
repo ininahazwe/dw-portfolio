@@ -77,11 +77,13 @@ function WorkspaceView() {
     const [query, setQuery] = useState('');
     const [searchOpen, setSearchOpen] = useState(false);
     const [sortAZ, setSortAZ] = useState(false);
-    const [periodOpen, setPeriodOpen] = useState(false); // résumé de période ouvert dans le panneau
     const [lightbox, setLightbox] = useState(null);
 
     // Filtre de la frise = ancre de l'URL (#oct25-apr26) : le lien partagé affiche les mêmes données
-    const period = PERIODS.find(p => p.slug === hash.slice(1)) ?? null;
+    // Format : #oct25-apr26 (période) · #oct25-apr26/summary (+ résumé ouvert) · #summary (résumé seul)
+    const [hashPeriod, hashView] = hash.slice(1).split('/');
+    const period = PERIODS.find(p => p.slug === hashPeriod) ?? null;
+    const periodOpen = hashPeriod === 'summary' || hashView === 'summary';
     const periodId = period?.id ?? null;
     const inPeriod = useMemo(() => projectsOfPeriod(periodId), [projectsOfPeriod, periodId]);
 
@@ -102,8 +104,11 @@ function WorkspaceView() {
     // Lien vers un projet inconnu (supprimé, faute de frappe) : retour à l'accueil
     useEffect(() => { if (match && !urlProject) navigate('/', { replace: true }); }, [match, urlProject, navigate]);
 
-    const closePanel = () => { setPeriodOpen(false); if (match) navigate({ pathname: '/', hash }); };
-    const showPeriod = () => { setPeriodOpen(true); if (match) navigate({ pathname: '/', hash }); };
+    // Construit l'ancre : période optionnelle + résumé optionnel
+    const hashFor = (target, summary) =>
+        target ? `#${target.slug}${summary ? '/summary' : ''}` : summary ? '#summary' : '';
+    const closePanel = () => { if (match || periodOpen) navigate({ pathname: '/', hash: hashFor(period, false) }); };
+    const showPeriod = () => navigate({ pathname: '/', hash: hashFor(period, true) });
     useEffect(() => {
         if (!view) return undefined;
         const onKey = (e) => { if (e.key === 'Escape' && !lightbox) closePanel(); };
@@ -124,10 +129,10 @@ function WorkspaceView() {
 
     const choosePeriod = (id) => {
         const target = id == null ? null : PERIODS.find(p => p.id === id);
-        navigate({ pathname: match ? `/project/${match.params.id}` : '/', hash: target ? `#${target.slug}` : '' });
+        navigate({ pathname: match ? `/project/${match.params.id}` : '/', hash: hashFor(target, periodOpen && !match) });
         setCategory(ALL);
     };
-    const select = (project) => { setPeriodOpen(false); navigate({ pathname: `/project/${project.id}`, hash }); };
+    const select = (project) => navigate({ pathname: `/project/${project.id}`, hash: hashFor(period, false) });
     const openVisuals = (project, index = 0) => project.images.length && setLightbox({
         images: project.images.map(im => ({
             src: im.src, full: im.full ?? im.src, title: project.title,
