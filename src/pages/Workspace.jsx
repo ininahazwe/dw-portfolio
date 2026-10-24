@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom';
 import {
-    ArrowLeft, Bell, CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, X,
+    ArrowLeft, CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, X,
 } from 'lucide-react';
 import { byRecency, phaseFor } from '../data/derive';
 import { useData, useModel } from '../data/DataProvider';
@@ -144,13 +144,6 @@ function WorkspaceView() {
             <header className="ws-top">
                 <Link to="/" className="ws-logo" aria-label="Home"><span>Y</span><i /></Link>
                 <ScheduleBar selected={periodId} onSelect={choosePeriod} />
-                <div className="ws-top-actions">
-                    <button className="ws-circle ws-circle--white ws-bell" title="Current period"
-                            onClick={() => choosePeriod(CURRENT_PERIOD.id)} aria-label="Go to current period">
-                        <Bell size={18} strokeWidth={1.5} /><i />
-                    </button>
-                    <span className="ws-avatar">YI</span>
-                </div>
             </header>
 
             <div className="ws-body">
@@ -168,7 +161,7 @@ function WorkspaceView() {
 
                 {/* ===== En-tête : titre + indicateurs ===== */}
                 <section className="ws-head">
-                    <h1 className="ws-title">P<span className="ws-o">O</span>RTFOLIO</h1>
+                    <h1 className="ws-title">PR<span className="ws-o">O</span>JECTS</h1>
                     <button className="ws-pill-btn" onClick={showPeriod}>
                         <span className="ws-pill-plus"><FileText size={14} strokeWidth={1.8} /></span>
                         Period summary

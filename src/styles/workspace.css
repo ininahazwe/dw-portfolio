@@ -74,7 +74,7 @@
    ===================================================================== */
 .ws-top {
     display: grid;
-    grid-template-columns: var(--ws-side) 1fr auto;
+    grid-template-columns: var(--ws-side) 1fr;
     align-items: center;
     gap: 0 var(--ws-gap);
 }
@@ -82,16 +82,6 @@
 .ws-logo span { font-size: 34px; font-weight: 500; letter-spacing: -.04em; line-height: 1; }
 .ws-logo i { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: var(--ws-lime); border: 2px solid var(--ws-ink); right: 2px; bottom: 6px; }
 
-.ws-top-actions { display: flex; gap: 12px; align-items: center; padding-left: 28px; }
-.ws-bell { position: relative; }
-.ws-bell i { position: absolute; top: 13px; right: 14px; width: 8px; height: 8px; border-radius: 50%; background: var(--ws-lime); border: 1.5px solid #F7F7F7; }
-.ws-avatar {
-    width: 52px; height: 52px; border-radius: 50%;
-    display: grid; place-items: center;
-    background: var(--ws-ink); color: var(--ws-lime);
-    font-size: 16px; font-weight: 500; letter-spacing: .02em;
-    box-shadow: 0 0 0 3px #F7F7F7;
-}
 
 /* ---------- Frise "My Journey" ---------- */
 .ws-schedule {
@@ -545,7 +535,6 @@
     .ws-schedule { grid-column: 1 / -1; grid-row: 2; height: auto; flex-wrap: wrap; border-radius: 30px; padding: 14px; }
     .ws-track { flex-basis: 100%; }
     .ws-track-label small, .ws-stack { display: none; }
-    .ws-top-actions { justify-self: end; padding: 0; }
     .ws-body { grid-template-columns: 1fr; margin-top: 28px; }
     .ws-side { display: none; }
     .ws-head, .ws-main { grid-column: 1; }
