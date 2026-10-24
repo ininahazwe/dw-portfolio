@@ -9,7 +9,7 @@ import { useData, useModel } from '../data/DataProvider';
 import ScheduleBar from '../components/workspace/ScheduleBar';
 import { ProjectCard } from '../components/workspace/Cards';
 import SummaryPanel from '../components/workspace/SummaryPanel';
-import Lightbox from '../components/Lightbox';
+import MediaViewer from '../components/workspace/MediaViewer';
 import '../styles/workspace.css';
 
 const ALL = 'all';
@@ -135,7 +135,7 @@ function WorkspaceView() {
     const select = (project) => navigate({ pathname: `/project/${project.id}`, hash: hashFor(period, false) });
     const openVisuals = (project, index = 0) => project.images.length && setLightbox({
         images: project.images.map(im => ({
-            src: im.src, full: im.full ?? im.src, title: project.title,
+            src: im.src, full: im.full ?? im.src, title: project.title, category: im.category,
             description: im.description ?? phaseFor(project, periodId).description, link: project.link,
         })),
         index,
@@ -243,7 +243,7 @@ function WorkspaceView() {
 
             <AnimatePresence>
                 {lightbox && (
-                    <Lightbox key="lightbox" images={lightbox.images} startIndex={lightbox.index} onClose={() => setLightbox(null)} />
+                    <MediaViewer key="viewer" images={lightbox.images} startIndex={lightbox.index} onClose={() => setLightbox(null)} />
                 )}
             </AnimatePresence>
         </div>

@@ -470,6 +470,59 @@
 @keyframes ws-shimmer { to { background-position: -200% 0; } }
 
 /* =====================================================================
+   VISIONNEUSE DES VISUELS (remplace l'ancienne lightbox sombre)
+   ===================================================================== */
+.ws-viewer { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 32px; }
+.ws-viewer-scrim { position: absolute; inset: 0; background: rgba(27,27,26,.45); }
+.ws-viewer-card {
+    position: relative;
+    display: grid; grid-template-columns: minmax(0, 1fr) 340px;
+    width: min(1180px, 100%); height: min(780px, 100%);
+    background: var(--ws-card);
+    border: 1px solid var(--ws-line);
+    border-radius: var(--ws-r-xl);
+    overflow: hidden;
+}
+.ws-viewer-close { position: absolute; top: 16px; right: 16px; z-index: 2; background: var(--ws-card); }
+.ws-viewer-stage { position: relative; min-height: 0; background: var(--ws-soft); }
+.ws-viewer-stage img {
+    position: absolute; inset: 28px; width: calc(100% - 56px); height: calc(100% - 56px);
+    object-fit: contain; display: block;
+}
+.ws-viewer-side {
+    display: flex; flex-direction: column; min-height: 0;
+    padding: 72px 28px 24px;
+}
+.ws-viewer-info { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--ws-line-2) transparent; padding-right: 4px; }
+.ws-viewer-info h3 { font-size: 26px; font-weight: 300; letter-spacing: -.01em; line-height: 1.15; margin-top: 14px; }
+.ws-viewer-info p { font-size: 14px; line-height: 1.7; color: var(--ws-text); margin-top: 14px; }
+.ws-viewer-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 22px;
+    height: 42px; padding: 0 18px; border-radius: 999px;
+    background: var(--ws-ink); color: #fff; font-size: 13.5px;
+    transition: background .15s ease;
+}
+.ws-viewer-link:hover { background: #000; }
+.ws-viewer-foot { padding-top: 20px; border-top: 1px solid var(--ws-line); margin-top: 20px; display: grid; gap: 18px; }
+.ws-viewer-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 3px; scrollbar-width: thin; scrollbar-color: var(--ws-line-2) transparent; }
+.ws-viewer-thumbs button {
+    flex: none; width: 52px; height: 52px; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--ws-line); opacity: .65; transition: opacity .15s ease, border-color .15s ease;
+}
+.ws-viewer-thumbs button:hover { opacity: 1; }
+.ws-viewer-thumbs button.is-on { opacity: 1; border-color: var(--ws-ink); box-shadow: 0 0 0 2px var(--ws-card), 0 0 0 3px var(--ws-ink); }
+.ws-viewer-thumbs img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.ws-viewer-nav { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--ws-muted); }
+
+@media (max-width: 900px) {
+    .ws-viewer { padding: 12px; }
+    .ws-viewer-card { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
+    .ws-viewer-side { padding: 18px 20px 20px; }
+    .ws-viewer-info { max-height: 22vh; }
+    .ws-viewer-info h3 { margin-top: 10px; font-size: 22px; }
+}
+
+/* =====================================================================
    RESPONSIVE (desktop prioritaire)
    ===================================================================== */
 @media (max-width: 1280px) {
