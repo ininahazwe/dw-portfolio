@@ -28,6 +28,12 @@ export const monthIndexIso = (iso = '') => {
     return y && m ? y * 12 + (m - 1) : null;
 };
 
+// Identifiant lisible pour l'URL : "oct25-apr26"
+const slugLabel = (a, b) => {
+    const f = (i) => `${MONTHS_EN[i % 12].toLowerCase()}${String(Math.floor(i / 12)).slice(2)}`;
+    return `${f(a)}-${f(b)}`;
+};
+
 const shortLabel = (a, b) => {
     const yy = (i) => String(Math.floor(i / 12)).slice(2);
     return yy(a) === yy(b)
@@ -53,7 +59,7 @@ export const splitMetric = (metrics = '') => {
 export function buildModel(raw) {
     const PERIODS = [...raw.periods]
         .sort((a, b) => a.start - b.start)
-        .map(p => ({ ...p, short: shortLabel(p.start, p.end) }));
+        .map(p => ({ ...p, short: shortLabel(p.start, p.end), slug: slugLabel(p.start, p.end) }));
     const periodById = Object.fromEntries(PERIODS.map(p => [p.id, p]));
     const periodRank = Object.fromEntries(PERIODS.map((p, i) => [p.id, i]));
 

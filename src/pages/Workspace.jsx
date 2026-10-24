@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
-import { Link, useMatch, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom';
 import {
-    ArrowLeft, Bell, CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, Sparkles, X,
+    ArrowLeft, Bell, CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, X,
 } from 'lucide-react';
 import { byRecency, phaseFor } from '../data/derive';
 import { useData, useModel } from '../data/DataProvider';
 import ScheduleBar from '../components/workspace/ScheduleBar';
-import { HighlightCard, ProjectCard } from '../components/workspace/Cards';
+import { ProjectCard } from '../components/workspace/Cards';
 import SummaryPanel from '../components/workspace/SummaryPanel';
 import Lightbox from '../components/Lightbox';
 import '../styles/workspace.css';
@@ -67,12 +67,12 @@ export default function Workspace() {
 
 function WorkspaceView() {
     const model = useModel();
-    const { CATEGORIES, CURRENT_PERIOD, LATEST_WITH_CONTENT, PROJECTS, periodById, projectsOfPeriod } = model;
+    const { CATEGORIES, CURRENT_PERIOD, LATEST_WITH_CONTENT, PERIODS, PROJECTS, projectsOfPeriod } = model;
     const navigate = useNavigate();
+    const { hash } = useLocation();
     const match = useMatch('/project/:id');
     const contentRef = useRef(null);
     const didMount = useRef(false);
-    const [periodId, setPeriodId] = useState(null); // filtre de la frise (null = toutes les périodes)
     const [category, setCategory] = useState(ALL);
     const [query, setQuery] = useState('');
     const [searchOpen, setSearchOpen] = useState(false);
@@ -80,11 +80,10 @@ function WorkspaceView() {
     const [periodOpen, setPeriodOpen] = useState(false); // résumé de période ouvert dans le panneau
     const [lightbox, setLightbox] = useState(null);
 
-    const period = periodId == null ? null : periodById[periodId];
+    // Filtre de la frise = ancre de l'URL (#oct25-apr26) : le lien partagé affiche les mêmes données
+    const period = PERIODS.find(p => p.slug === hash.slice(1)) ?? null;
+    const periodId = period?.id ?? null;
     const inPeriod = useMemo(() => projectsOfPeriod(periodId), [projectsOfPeriod, periodId]);
-    // Highlights = projets de la période en cours, indépendamment du filtre
-    const featured = useMemo(() => [...projectsOfPeriod(CURRENT_PERIOD.id)].sort(byRecency), [projectsOfPeriod, CURRENT_PERIOD]);
-    const newest = featured[0]?.id;
 
     const q = query.trim().toLowerCase();
     const list = inPeriod
@@ -103,8 +102,8 @@ function WorkspaceView() {
     // Lien vers un projet inconnu (supprimé, faute de frappe) : retour à l'accueil
     useEffect(() => { if (match && !urlProject) navigate('/', { replace: true }); }, [match, urlProject, navigate]);
 
-    const closePanel = () => { setPeriodOpen(false); if (match) navigate('/'); };
-    const showPeriod = () => { setPeriodOpen(true); if (match) navigate('/'); };
+    const closePanel = () => { setPeriodOpen(false); if (match) navigate({ pathname: '/', hash }); };
+    const showPeriod = () => { setPeriodOpen(true); if (match) navigate({ pathname: '/', hash }); };
     useEffect(() => {
         if (!view) return undefined;
         const onKey = (e) => { if (e.key === 'Escape' && !lightbox) closePanel(); };
@@ -123,8 +122,12 @@ function WorkspaceView() {
         if (window.scrollY < top - 4) window.scrollTo({ top, behavior: 'smooth' });
     }, [isOpen]);
 
-    const choosePeriod = (id) => { setPeriodId(id); setCategory(ALL); };
-    const select = (project) => { setPeriodOpen(false); navigate(`/project/${project.id}`); };
+    const choosePeriod = (id) => {
+        const target = id == null ? null : PERIODS.find(p => p.id === id);
+        navigate({ pathname: match ? `/project/${match.params.id}` : '/', hash: target ? `#${target.slug}` : '' });
+        setCategory(ALL);
+    };
+    const select = (project) => { setPeriodOpen(false); navigate({ pathname: `/project/${project.id}`, hash }); };
     const openVisuals = (project, index = 0) => project.images.length && setLightbox({
         images: project.images.map(im => ({
             src: im.src, full: im.full ?? im.src, title: project.title,
@@ -158,7 +161,6 @@ function WorkspaceView() {
                     </Link>
                     <div className="ws-side-stack">
                         <button className="ws-side-btn is-on" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} title="Overview"><LayoutGrid size={17} strokeWidth={1.6} /></button>
-                        <button className="ws-side-btn" onClick={() => scrollTo('highlights')} title="Highlights"><Sparkles size={17} strokeWidth={1.6} /></button>
                         <button className="ws-side-btn" onClick={() => scrollTo('projects')} title="All projects"><Layers size={17} strokeWidth={1.6} /></button>
                         <button className="ws-side-btn" onClick={showPeriod} title="Period summary"><CalendarRange size={17} strokeWidth={1.6} /></button>
                     </div>
@@ -181,29 +183,6 @@ function WorkspaceView() {
                 {/* ===== Contenu ===== */}
                 <div ref={contentRef} className={`ws-content ${view ? 'is-open' : ''}`}>
                 <main className="ws-main">
-                    <section id="highlights" className="ws-section">
-                        <div className="ws-section-head">
-                            <h2>Highlights</h2>
-                            <span className="ws-count"><b>{featured.length}</b> Projects</span>
-                            <span className="ws-period-tag">Current period · {CURRENT_PERIOD.short}</span>
-                        </div>
-                        {featured.length ? (
-                            <div className="ws-grid">
-                                {featured.map(p => (
-                                    <Cell key={p.id}>
-                                        <HighlightCard project={p} periodId={CURRENT_PERIOD.id}
-                                                       selected={selectedId === p.id} isNewest={p.id === newest}
-                                                       onSelect={() => select(p)} />
-                                    </Cell>
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="ws-empty">
-                                <b>{CURRENT_PERIOD.short}</b> — content for the current period is coming soon.
-                            </div>
-                        )}
-                    </section>
-
                     <section id="projects" className="ws-section">
                         <div className="ws-section-head">
                             <h2>All Projects</h2>
