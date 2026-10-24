@@ -60,28 +60,6 @@ function ProjectSummary({ project, periodId, onOpen }) {
                 <p>{project.category.title}{project.tag ? ` · ${project.tag}` : ''}</p>
             </div>
             <ol className="ws-sum-timeline">
-                {project.images.length > 0 && (
-                    <li>
-                        <span className="ws-sum-time">Media</span>
-                        <i className="ws-sum-node" />
-                        <div className="ws-sum-block">
-                            <div className="ws-sum-block-head">
-                                <h5>Visuals:</h5>
-                                <button className="ws-circle ws-circle--ghost" aria-label="Open visuals" onClick={() => onOpen(project, 0)}>
-                                    <Download size={15} strokeWidth={1.6} />
-                                </button>
-                            </div>
-                            <div className="ws-docs">
-                                {project.images.slice(0, 3).map((im, i) => (
-                                    <button key={i} className="ws-doc" onClick={() => onOpen(project, i)}>
-                                        <img src={im.src} alt="" loading="lazy" />
-                                        <span>{im.category ?? `Visual ${i + 1}`}</span>
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </li>
-                )}
                 {phases.map(ph => {
                     const period = periodById[ph.periodId];
                     const metric = splitMetric(ph.metrics);
@@ -110,6 +88,28 @@ function ProjectSummary({ project, periodId, onOpen }) {
                         </li>
                     );
                 })}
+                {project.images.length > 0 && (
+                    <li>
+                        <span className="ws-sum-time">Media</span>
+                        <i className="ws-sum-node" />
+                        <div className="ws-sum-block">
+                            <div className="ws-sum-block-head">
+                                <h5>Visuals:</h5>
+                                <button className="ws-circle ws-circle--ghost" aria-label="Open visuals" onClick={() => onOpen(project, 0)}>
+                                    <Download size={15} strokeWidth={1.6} />
+                                </button>
+                            </div>
+                            <div className="ws-docs">
+                                {project.images.slice(0, 3).map((im, i) => (
+                                    <button key={i} className="ws-doc" onClick={() => onOpen(project, i)}>
+                                        <img src={im.src} alt="" loading="lazy" />
+                                        <span>{im.category ?? `Visual ${i + 1}`}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </li>
+                )}
             </ol>
         </>
     );
