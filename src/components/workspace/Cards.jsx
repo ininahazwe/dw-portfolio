@@ -4,7 +4,7 @@ import { useModel } from '../../data/DataProvider';
 import Thumb from './Thumb';
 
 // Pastilles de progression : une seule teinte discrète pour les périodes actives
-const ACTIVE = '#5E7A66';
+const ACTIVE = '#46614F';
 
 export function PhaseDots({ project }) {
     const { PERIODS } = useModel();
