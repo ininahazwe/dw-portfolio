@@ -1,19 +1,20 @@
+import { Fragment } from 'react';
 import { ArrowUpRight, ChevronDown, Images, Flame } from 'lucide-react';
 import { phaseFor } from '../../data/derive';
 import { useModel } from '../../data/DataProvider';
 import Thumb from './Thumb';
 
-// Couleurs des pastilles de progression, une par période (ambiance maquette)
-const RAMP = ['#F58C8C', '#F7B267', '#F2D95C', '#9BDB6C', '#5FC98C', '#55B6D9'];
+// Pastilles de progression : une seule teinte discrète pour les périodes actives
+const ACTIVE = '#46614F';
 
 export function PhaseDots({ project }) {
     const { PERIODS } = useModel();
     const active = new Set(project.phases.map(ph => ph.periodId));
     return (
         <span className="ws-dots" aria-label={`Active in ${active.size} of ${PERIODS.length} periods`}>
-            {PERIODS.map((p, i) => (
+            {PERIODS.map(p => (
                 <i key={p.id} title={p.short}
-                   style={active.has(p.id) ? { background: RAMP[i % RAMP.length] } : undefined} />
+                   style={active.has(p.id) ? { background: ACTIVE } : undefined} />
             ))}
         </span>
     );
@@ -99,9 +100,16 @@ export function ProjectCard({ project, periodId, selected, onSelect, onOpenVisua
 
             <div className="ws-task-main">
                 <Thumb project={project} size={44} className="ws-thumb--soft" fallback="initials" />
-                <div>
+                <div className="ws-task-text">
                     <h3 className="ws-task-title">{project.title}</h3>
-                    <p className="ws-task-date">{range.join('  →  ')}</p>
+                    <p className="ws-task-date">
+                        {range.map((r, i) => (
+                            <Fragment key={i}>
+                                {i > 0 && ' → '}
+                                <span>{r}</span>
+                            </Fragment>
+                        ))}
+                    </p>
                 </div>
             </div>
 

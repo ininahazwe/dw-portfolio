@@ -2,14 +2,14 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom';
 import {
-    ArrowLeft, CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, X,
+    CalendarRange, FileText, LayoutGrid, Layers, Search, SlidersHorizontal, X,
 } from 'lucide-react';
 import { byRecency, phaseFor } from '../data/derive';
 import { useData, useModel } from '../data/DataProvider';
 import ScheduleBar from '../components/workspace/ScheduleBar';
 import { ProjectCard } from '../components/workspace/Cards';
 import SummaryPanel from '../components/workspace/SummaryPanel';
-import Lightbox from '../components/Lightbox';
+import MediaViewer from '../components/workspace/MediaViewer';
 import '../styles/workspace.css';
 
 const ALL = 'all';
@@ -135,7 +135,7 @@ function WorkspaceView() {
     const select = (project) => navigate({ pathname: `/project/${project.id}`, hash: hashFor(period, false) });
     const openVisuals = (project, index = 0) => project.images.length && setLightbox({
         images: project.images.map(im => ({
-            src: im.src, full: im.full ?? im.src, title: project.title,
+            src: im.src, full: im.full ?? im.src, title: project.title, category: im.category,
             description: im.description ?? phaseFor(project, periodId).description, link: project.link,
         })),
         index,
@@ -154,9 +154,6 @@ function WorkspaceView() {
             <div className="ws-body">
                 {/* ===== Barre latérale ===== */}
                 <nav className="ws-side" aria-label="Sections">
-                    <Link to="/v2" className="ws-circle ws-circle--white ws-back" title="Previous version" aria-label="Previous version">
-                        <ArrowLeft size={18} strokeWidth={1.5} />
-                    </Link>
                     <div className="ws-side-stack">
                         <button className="ws-side-btn is-on" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} title="Overview"><LayoutGrid size={17} strokeWidth={1.6} /></button>
                         <button className="ws-side-btn" onClick={() => scrollTo('projects')} title="All projects"><Layers size={17} strokeWidth={1.6} /></button>
@@ -243,7 +240,7 @@ function WorkspaceView() {
 
             <AnimatePresence>
                 {lightbox && (
-                    <Lightbox key="lightbox" images={lightbox.images} startIndex={lightbox.index} onClose={() => setLightbox(null)} />
+                    <MediaViewer key="viewer" images={lightbox.images} startIndex={lightbox.index} onClose={() => setLightbox(null)} />
                 )}
             </AnimatePresence>
         </div>
