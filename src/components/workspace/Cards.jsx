@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { ArrowUpRight, ChevronDown, Images, Flame } from 'lucide-react';
 import { phaseFor } from '../../data/derive';
 import { useModel } from '../../data/DataProvider';
@@ -99,9 +100,16 @@ export function ProjectCard({ project, periodId, selected, onSelect, onOpenVisua
 
             <div className="ws-task-main">
                 <Thumb project={project} size={44} className="ws-thumb--soft" fallback="initials" />
-                <div>
+                <div className="ws-task-text">
                     <h3 className="ws-task-title">{project.title}</h3>
-                    <p className="ws-task-date">{range.join('  →  ')}</p>
+                    <p className="ws-task-date">
+                        {range.map((r, i) => (
+                            <Fragment key={i}>
+                                {i > 0 && ' → '}
+                                <span>{r}</span>
+                            </Fragment>
+                        ))}
+                    </p>
                 </div>
             </div>
 
